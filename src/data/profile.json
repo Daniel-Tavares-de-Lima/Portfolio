@@ -1,0 +1,19 @@
+{
+  "name": "Daniel Tavares",
+  "title": {
+    "pt": "Desenvolvedor Full Stack",
+    "en": "Full Stack Developer"
+  },
+  "bio": {
+    "pt": "Formado em Análise e Desenvolvimento de Sistemas e graduando em Ciência da Computação pela UFRPE. Possuo experiência em desenvolvimento de software, suporte técnico e integração de sistemas, atuando com tecnologias como JavaScript, TypeScript, Node.js, APIs REST e bancos de dados. Tenho interesse em automação, inteligência artificial e desenvolvimento de soluções que gerem impacto real para usuários e empresas. Sou uma pessoa proativa, organizada e com facilidade para aprender novas tecnologias e resolver problemas.",
+    "en": "Graduate in Systems Analysis and Development and Computer Science undergraduate at UFRPE. I have experience in software development, technical support and systems integration, working with JavaScript, TypeScript, Node.js, REST APIs and databases. I'm interested in automation, artificial intelligence and building solutions that create real impact for users and companies. I'm proactive, organized and quick to learn new technologies and solve problems."
+  },
+  "avatar": "/avatar.png",
+  "cv": "/cv-daniel-tavares.pdf",
+  "links": {
+    "github": "https://github.com/Daniel-Tavares-de-Lima",
+    "linkedin": "https://linkedin.com/in/danieltavareslima",
+    "email": "mailto:danieltavareslima72@gmail.com",
+    "phone": "+5581997642392"
+  }
+}

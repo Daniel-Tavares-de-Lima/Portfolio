@@ -1,0 +1,36 @@
+/* src/styles/themes.css */
+:root,
+[data-theme='light'] {
+  --bg-primary: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --border: #e2e8f0;
+  --card-bg: #f8fafc;
+  --header-bg: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme='dark'] {
+  --bg-primary: #0f172a;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --accent: #60a5fa;
+  --accent-hover: #93c5fd;
+  --border: #334155;
+  --card-bg: #1e293b;
+  --header-bg: rgba(15, 23, 42, 0.9);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg-primary: #0f172a;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --accent: #60a5fa;
+    --accent-hover: #93c5fd;
+    --border: #334155;
+    --card-bg: #1e293b;
+    --header-bg: rgba(15, 23, 42, 0.9);
+  }
+}

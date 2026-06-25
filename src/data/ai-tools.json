@@ -1,0 +1,17 @@
+{
+  "tools": ["Claude", "ChatGPT", "Gemini", "GitHub Copilot", "N8N"],
+  "useCases": {
+    "pt": [
+      "Desenvolvimento de agentes de IA para análise de requisitos, automação e geração de conteúdo",
+      "Automação de tarefas repetitivas no fluxo de desenvolvimento com N8N e ferramentas de IA",
+      "Desenvolvimento assistido por IA para aumento de produtividade",
+      "Integração de ferramentas de IA na tomada de decisão técnica"
+    ],
+    "en": [
+      "AI agent development for requirements analysis, automation and content generation",
+      "Automation of repetitive tasks in the development workflow with N8N and AI tools",
+      "AI-assisted development for increased productivity",
+      "Integration of AI tools in technical decision-making"
+    ]
+  }
+}

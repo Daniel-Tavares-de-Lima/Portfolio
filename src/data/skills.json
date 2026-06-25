@@ -1,0 +1,8 @@
+{
+  "languages": ["JavaScript", "TypeScript", "Python", "SQL", "Java"],
+  "frameworks": ["Node.js", "Vue.js", "Sequelize", "N8N", "Spring Boot", "Flutter", "Git", "Docker", "Postman"],
+  "concepts": {
+    "pt": ["APIs REST", "Banco Relacional", "Automação de Processos", "IA Generativa", "Agentes de IA", "Metodologias Ágeis", "Levantamento de Requisitos"],
+    "en": ["REST APIs", "Relational Databases", "Process Automation", "Generative AI", "AI Agents", "Agile Methodologies", "Requirements Gathering"]
+  }
+}

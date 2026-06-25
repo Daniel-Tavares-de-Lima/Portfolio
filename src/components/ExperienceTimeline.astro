@@ -1,0 +1,52 @@
+---
+import experience from '../data/experience.json';
+import { useTranslations, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+<section id="experience">
+  <div class="container">
+    <h2>{t.nav.experience}</h2>
+    <div class="timeline">
+      {experience.map(job => (
+        <div class="timeline-item card">
+          <div class="timeline-marker" />
+          <div>
+            <h3>{job.company}</h3>
+            <p class="role">{job.role[locale]}</p>
+            <p class="meta">{job.period[locale]} · {job.location}</p>
+            <ul>
+              {job.highlights[locale].map(h => <li>{h}</li>)}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0.5rem; top: 0; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .timeline-item { position: relative; margin-bottom: 1.5rem; }
+  .timeline-item.card:hover { transform: none; }
+  .timeline-marker {
+    position: absolute; left: -1.65rem; top: 1.5rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--bg-primary);
+  }
+  h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+  .role { color: var(--accent); font-weight: 500; }
+  .meta { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
+  ul { padding-left: 1.2rem; color: var(--text-secondary); font-size: clamp(0.85rem, 2vw, 0.9rem); }
+  li { margin-bottom: 0.3rem; }
+  @media (max-width: 480px) {
+    .timeline { padding-left: 1.25rem; }
+    .timeline-marker { left: -1.15rem; }
+  }
+</style>

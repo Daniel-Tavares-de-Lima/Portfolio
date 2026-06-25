@@ -1,0 +1,20 @@
+[
+  {
+    "institution": "Universidade Federal Rural de Pernambuco (UFRPE)",
+    "degree": {
+      "pt": "Bacharelado em Ciência da Computação",
+      "en": "Bachelor's in Computer Science"
+    },
+    "period": { "pt": "Previsão: 2027.2", "en": "Expected: 2027.2" },
+    "status": { "pt": "Em andamento", "en": "In progress" }
+  },
+  {
+    "institution": "Centro Universitário SENAC",
+    "degree": {
+      "pt": "Tecnólogo em Análise e Desenvolvimento de Sistemas",
+      "en": "Associate Degree in Systems Analysis and Development"
+    },
+    "period": { "pt": "Embarque Digital", "en": "Embarque Digital Program" },
+    "status": { "pt": "Concluído", "en": "Completed" }
+  }
+]

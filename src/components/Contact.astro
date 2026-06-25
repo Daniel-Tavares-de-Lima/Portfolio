@@ -1,0 +1,23 @@
+---
+import profile from '../data/profile.json';
+import { useTranslations, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+<section id="contact">
+  <div class="container">
+    <h2>{t.contact.title}</h2>
+    <div class="contact-links">
+      <a href={profile.links.email} class="btn">{profile.links.email.replace('mailto:', '')}</a>
+      <a href={profile.links.linkedin} class="btn btn-outline" target="_blank" rel="noopener">LinkedIn</a>
+      <a href={profile.links.github} class="btn btn-outline" target="_blank" rel="noopener">GitHub</a>
+      <a href={profile.cv} class="btn btn-outline" download>{t.contact.download_cv}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+</style>

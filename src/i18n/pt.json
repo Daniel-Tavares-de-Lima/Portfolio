@@ -1,0 +1,48 @@
+{
+  "nav": {
+    "about": "Sobre Mim",
+    "experience": "Experiência",
+    "education": "Formação",
+    "satre": "SATRE",
+    "projects": "Projetos",
+    "skills": "Skills",
+    "ai": "IA & Automação",
+    "contact": "Contato"
+  },
+  "hero": {
+    "cta_cv": "Baixar CV",
+    "cta_github": "GitHub"
+  },
+  "common": {
+    "expand_image": "Clique para expandir",
+    "close": "Fechar"
+  },
+  "projects": {
+    "view_github": "Ver no GitHub",
+    "view_demo": "Ver Demo",
+    "category_professional": "Profissional",
+    "category_academic": "Acadêmico",
+    "category_personal": "Pessoal"
+  },
+  "contact": {
+    "title": "Contato",
+    "download_cv": "Baixar Currículo PDF"
+  },
+  "satre": {
+    "features_title": "Principais Funcionalidades",
+    "benefits_title": "Fornecendo",
+    "screens_caption": "Interface do aplicativo móvel — busca, mapa e detalhes das unidades",
+    "features_caption": "Funcionalidades e benefícios da plataforma",
+    "screens_alt": "Telas do aplicativo SATRE",
+    "features_alt": "Funcionalidades e benefícios do SATRE",
+    "intro_caption": "Apresentação e identidade visual do SATRE"
+  },
+  "skills": {
+    "languages": "Linguagens",
+    "frameworks": "Frameworks & Ferramentas",
+    "concepts": "Conceitos"
+  },
+  "footer": {
+    "built_with": ""
+  }
+}

@@ -1,0 +1,64 @@
+[
+  {
+    "company": "Beyond Co.",
+    "role": { "pt": "Desenvolvedor Full Stack (Estágio)", "en": "Full Stack Developer (Intern)" },
+    "period": { "pt": "Out/2025 – Jun/2026", "en": "Oct/2025 – Jun/2026" },
+    "location": "Recife - PE",
+    "highlights": {
+      "pt": [
+        "Desenvolvimento e manutenção de funcionalidades em sistemas corporativos utilizando Node.js, Vue.js, JavaScript, Sequelize e N8N",
+        "Implementação de melhorias em frontend e backend, correção de bugs e sustentação da plataforma",
+        "Desenvolvimento e consumo de APIs REST para integração entre serviços",
+        "Manipulação de bancos de dados SQL e modelagem de consultas utilizando Sequelize ORM",
+        "Participação em levantamento de requisitos, análise de demandas e identificação de oportunidades de melhoria em processos internos",
+        "Utilização de Git para controle de versão e colaboração em ambiente de desenvolvimento",
+        "Desenvolvimento de agentes de IA utilizando Claude, ChatGPT e Gemini para apoio à produtividade e automação de tarefas"
+      ],
+      "en": [
+        "Development and maintenance of corporate system features using Node.js, Vue.js, JavaScript, Sequelize and N8N",
+        "Frontend and backend improvements, bug fixes and platform maintenance",
+        "REST API development and consumption for service integration",
+        "SQL database management and query modeling using Sequelize ORM",
+        "Requirements gathering, demand analysis and identification of internal process improvements",
+        "Git for version control and collaboration in development environments",
+        "AI agent development using Claude, ChatGPT and Gemini for productivity support and task automation"
+      ]
+    }
+  },
+  {
+    "company": "Emlurb",
+    "role": { "pt": "Estagiário de TI", "en": "IT Intern" },
+    "period": { "pt": "Mai/2024 – Out/2025", "en": "May/2024 – Oct/2025" },
+    "location": "Recife - PE",
+    "highlights": {
+      "pt": [
+        "Suporte técnico a usuários internos",
+        "Configuração de equipamentos de rede e infraestrutura",
+        "Diagnóstico e resolução de incidentes de conectividade"
+      ],
+      "en": [
+        "Technical support for internal users",
+        "Network equipment and infrastructure configuration",
+        "Connectivity incident diagnosis and resolution"
+      ]
+    }
+  },
+  {
+    "company": "Seed a Bit Tecnologia",
+    "role": { "pt": "Analista de Negócios", "en": "Business Analyst" },
+    "period": { "pt": "2024", "en": "2024" },
+    "location": "Recife - PE",
+    "highlights": {
+      "pt": [
+        "Prospecção e qualificação de leads",
+        "Levantamento de necessidades de negócio",
+        "Ponte entre áreas técnicas e comerciais"
+      ],
+      "en": [
+        "Lead prospecting and qualification",
+        "Business needs assessment",
+        "Bridge between technical and commercial teams"
+      ]
+    }
+  }
+]

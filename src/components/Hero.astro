@@ -1,0 +1,41 @@
+---
+import profile from '../data/profile.json';
+import ImageLightbox from './ImageLightbox.astro';
+import { useTranslations, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+<section id="hero" class="hero section-plain">
+  <div class="container hero-inner">
+    <ImageLightbox
+      src={profile.avatar}
+      alt={profile.name}
+      expandLabel={t.common.expand_image}
+      closeLabel={t.common.close}
+      variant="avatar"
+      loading="eager"
+    />
+    <div>
+      <h1>{profile.name}</h1>
+      <p class="title">{profile.title[locale]}</p>
+      <div class="hero-actions">
+        <a href={profile.cv} class="btn" download>{t.hero.cta_cv}</a>
+        <a href={profile.links.github} class="btn btn-outline" target="_blank" rel="noopener">{t.hero.cta_github}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { padding: clamp(3rem, 10vw, 6rem) 0 clamp(2rem, 6vw, 4rem); }
+  .hero-inner { display: flex; align-items: center; gap: clamp(1rem, 4vw, 2rem); }
+  h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); margin-bottom: 0.25rem; }
+  .title { font-size: clamp(1rem, 2.5vw, 1.15rem); color: var(--text-secondary); margin-bottom: 1.5rem; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-start; }
+  @media (max-width: 600px) {
+    .hero-inner { flex-direction: column; text-align: center; }
+    .hero-actions { justify-content: center; }
+  }
+</style>

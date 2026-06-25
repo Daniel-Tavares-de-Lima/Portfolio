@@ -1,0 +1,38 @@
+---
+---
+<button id="theme-toggle" aria-label="Toggle theme" class="theme-toggle">
+  <span class="icon-light">☀️</span>
+  <span class="icon-dark">🌙</span>
+</button>
+
+<style>
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+  }
+  [data-theme='dark'] .icon-light { display: none; }
+  [data-theme='light'] .icon-dark,
+  :root:not([data-theme]) .icon-dark { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .icon-light { display: none; }
+    :root:not([data-theme='light']) .icon-dark { display: inline; }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+  btn?.addEventListener('click', () => {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = current === 'dark' || (!current && prefersDark);
+    const next = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+</script>

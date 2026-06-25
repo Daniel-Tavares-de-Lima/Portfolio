@@ -1,0 +1,48 @@
+{
+  "nav": {
+    "about": "About Me",
+    "experience": "Experience",
+    "education": "Education",
+    "satre": "SATRE",
+    "projects": "Projects",
+    "skills": "Skills",
+    "ai": "AI & Automation",
+    "contact": "Contact"
+  },
+  "hero": {
+    "cta_cv": "Download CV",
+    "cta_github": "GitHub"
+  },
+  "common": {
+    "expand_image": "Click to expand",
+    "close": "Close"
+  },
+  "projects": {
+    "view_github": "View on GitHub",
+    "view_demo": "View Demo",
+    "category_professional": "Professional",
+    "category_academic": "Academic",
+    "category_personal": "Personal"
+  },
+  "contact": {
+    "title": "Contact",
+    "download_cv": "Download CV PDF"
+  },
+  "satre": {
+    "features_title": "Key Features",
+    "benefits_title": "Providing",
+    "screens_caption": "Mobile app interface — search, map and unit details",
+    "features_caption": "Platform features and benefits",
+    "screens_alt": "SATRE app screens",
+    "features_alt": "SATRE features and benefits",
+    "intro_caption": "SATRE project presentation and visual identity"
+  },
+  "skills": {
+    "languages": "Languages",
+    "frameworks": "Frameworks & Tools",
+    "concepts": "Concepts"
+  },
+  "footer": {
+    "built_with": "Built with Astro"
+  }
+}

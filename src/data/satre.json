@@ -1,0 +1,58 @@
+{
+  "name": "SATRE",
+  "fullName": {
+    "pt": "Sistema de Informação de Saúde em Tempo Real",
+    "en": "Real-Time Health Information System"
+  },
+  "role": {
+    "pt": "Fundador e Desenvolvedor",
+    "en": "Founder & Developer"
+  },
+  "period": {
+    "pt": "Mar/2024 – Atual",
+    "en": "Mar/2024 – Present"
+  },
+  "status": {
+    "pt": "Em desenvolvimento",
+    "en": "In development"
+  },
+  "tagline": {
+    "pt": "Startup voltada para transparência e acesso à informação no sistema de saúde",
+    "en": "Startup focused on transparency and access to information in the healthcare system"
+  },
+  "description": {
+    "pt": [
+      "Projeto de startup voltado para aumentar a transparência e o acesso à informação no sistema de saúde público e privado.",
+      "Desenvolvimento de uma plataforma móvel para disponibilizar informações em tempo real sobre UPAs e unidades de pronto atendimento, incluindo tempo estimado de espera, disponibilidade de médicos, especialidades, quantidade de pacientes e localização das unidades.",
+      "Participação na definição do produto, levantamento de requisitos, modelagem da solução e planejamento das funcionalidades, com foco em melhorar a experiência dos cidadãos na busca por atendimento médico."
+    ],
+    "en": [
+      "Startup project aimed at increasing transparency and access to information in public and private healthcare systems.",
+      "Development of a mobile platform to provide real-time information about ER units and urgent care facilities, including estimated wait times, doctor availability, specialties, patient volume and unit locations.",
+      "Product definition, requirements gathering, solution modeling and feature planning, focused on improving citizens' experience when seeking medical care."
+    ]
+  },
+  "features": {
+    "pt": [
+      { "title": "Quantitativo médico/plantão", "description": "Pacientes e atendimentos em tempo real por unidade" },
+      { "title": "Tempo estimado de atendimento", "description": "Previsão de espera para UPAs e hospitais de urgência" },
+      { "title": "Localização das unidades", "description": "Mapa e listagem de unidades de pronto atendimento" }
+    ],
+    "en": [
+      { "title": "Medical/shift metrics", "description": "Real-time patients and appointments per unit" },
+      { "title": "Estimated wait time", "description": "Wait time forecasts for ER and urgent care units" },
+      { "title": "Unit locations", "description": "Map and listing of urgent care facilities" }
+    ]
+  },
+  "benefits": {
+    "pt": ["Transparência de informações", "Ajuda na tomada de decisão", "Atendimento rápido"],
+    "en": ["Information transparency", "Help in decision making", "Faster care access"]
+  },
+  "stack": ["Flutter", "Mobile", "Health Tech", "Product Design", "APIs"],
+  "images": {
+    "intro": "/projects/satre/satre-intro.png",
+    "screens": "/projects/satre/satre-screens.png",
+    "features": "/projects/satre/satre-features.png"
+  },
+  "brandColor": "#3d9a96"
+}

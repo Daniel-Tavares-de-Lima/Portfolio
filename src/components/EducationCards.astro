@@ -1,0 +1,29 @@
+---
+import education from '../data/education.json';
+import { useTranslations, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+<section id="education">
+  <div class="container">
+    <h2>{t.nav.education}</h2>
+    <div class="grid-2">
+      {education.map(edu => (
+        <div class="card">
+          <h3>{edu.institution}</h3>
+          <p class="degree">{edu.degree[locale]}</p>
+          <p class="meta">{edu.period[locale]}</p>
+          <span class="tag">{edu.status[locale]}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+  .degree { color: var(--text-secondary); margin-bottom: 0.25rem; }
+  .meta { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
+</style>

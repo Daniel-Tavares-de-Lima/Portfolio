@@ -1,0 +1,21 @@
+---
+interface Props { locale: 'pt' | 'en'; }
+const { locale } = Astro.props;
+const other = locale === 'pt' ? 'en' : 'pt';
+const label = locale === 'pt' ? 'EN' : 'PT';
+---
+<a href={`/${other}${Astro.url.hash}`} class="lang-toggle" aria-label={`Switch to ${other}`}>
+  {label}
+</a>
+
+<style>
+  .lang-toggle {
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.7rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+  .lang-toggle:hover { color: var(--accent); border-color: var(--accent); }
+</style>

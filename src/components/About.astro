@@ -1,0 +1,31 @@
+---
+import profile from '../data/profile.json';
+import { useTranslations, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+<section id="about">
+  <div class="container">
+    <h2>{t.nav.about}</h2>
+    <p class="bio">{profile.bio[locale]}</p>
+    <div class="social-links">
+      <a href={profile.links.github} target="_blank" rel="noopener">GitHub</a>
+      <a href={profile.links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+      <a href={profile.links.email}>Email</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bio {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 780px;
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+  }
+  .social-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .social-links a { font-weight: 500; }
+</style>

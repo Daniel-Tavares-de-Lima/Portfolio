@@ -1,0 +1,20 @@
+---
+import { useTranslations, type Locale } from '../i18n';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container">
+    <p>&copy; {year} Daniel Tavares · {t.footer.built_with}</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: 2rem 0; border-top: 1px solid var(--border);
+    text-align: center; color: var(--text-secondary); font-size: 0.85rem;
+  }
+</style>
