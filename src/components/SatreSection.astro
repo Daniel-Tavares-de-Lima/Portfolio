@@ -18,6 +18,9 @@ const t = useTranslations(locale);
           {satre.role[locale]} · {satre.period[locale]}
         </p>
         <p class="tagline">{satre.tagline[locale]}</p>
+        <a href={satre.github} class="btn btn-outline satre-github" target="_blank" rel="noopener">
+          {t.projects.view_github}
+        </a>
       </div>
       <ImageLightbox
         src={satre.images.intro}
@@ -122,6 +125,18 @@ const t = useTranslations(locale);
     font-size: 1rem;
     color: var(--text-secondary);
     max-width: 520px;
+    margin-bottom: 1rem;
+  }
+
+  .satre-github {
+    margin-top: 0.25rem;
+    border-color: var(--satre-accent);
+    color: var(--satre-accent);
+  }
+
+  .satre-github:hover {
+    background: var(--satre-accent);
+    color: #fff;
   }
 
   .satre-body {

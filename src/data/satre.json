@@ -48,7 +48,8 @@
     "pt": ["Transparência de informações", "Ajuda na tomada de decisão", "Atendimento rápido"],
     "en": ["Information transparency", "Help in decision making", "Faster care access"]
   },
-  "stack": ["Flutter", "Mobile", "Health Tech", "Product Design", "APIs"],
+  "stack": ["Expo", "React Native", "Node.js", "Fastify", "PostgreSQL", "Prisma", "TypeScript"],
+  "github": "https://github.com/Daniel-Tavares-de-Lima/SATRE",
   "images": {
     "intro": "/projects/satre/satre-intro.png",
     "screens": "/projects/satre/satre-screens.png",
