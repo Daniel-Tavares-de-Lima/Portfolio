@@ -1,0 +1,70 @@
+---
+import { useTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+  locale: Locale;
+  year: string;
+}
+
+const { locale, year } = Astro.props;
+const t = useTranslations(locale);
+const other = locale === 'pt' ? 'en' : 'pt';
+
+const navItems = [
+  { href: '#about', label: t.nav.about },
+  { href: '#experience', label: t.nav.experience },
+  { href: '#education', label: t.nav.education },
+  { href: '#satre', label: t.nav.satre },
+  { href: '#projects', label: t.nav.projects },
+  { href: '#skills', label: t.nav.skills },
+  { href: '#ai', label: t.nav.ai },
+  { href: '#contact', label: t.nav.contact },
+];
+---
+<aside class="geo-sidebar">
+  <nav class="geo-menu-box" aria-label={t.era1996.menu_title}>
+    <p class="geo-menu-title">{t.era1996.menu_title}</p>
+    {navItems.map((item) => (
+      <a href={item.href} class="geo-menu-link">{item.label.toUpperCase()}</a>
+    ))}
+  </nav>
+
+  <div class="geo-counter">
+    <p class="geo-counter__label">{t.era1996.visitors}</p>
+    <p class="geo-counter__digits" id="visitor-count">013371</p>
+  </div>
+
+  <div class="geo-mail">
+    <span class="geo-mail-icon" aria-hidden="true">✉️</span>
+    <p class="geo-mail-text geo-mail-blink">{t.era1996.youve_got_mail}</p>
+    <a href={`/${other}/${year}`} class="geo-lang">{locale === 'pt' ? 'EN' : 'PT'}</a>
+  </div>
+</aside>
+
+<script is:inline>
+  (function () {
+    const el = document.getElementById('visitor-count');
+    if (!el) return;
+    const stored = parseInt(localStorage.getItem('geo96-visitors') || '13371', 10);
+    const next = stored + 1;
+    localStorage.setItem('geo96-visitors', String(next));
+    el.textContent = String(next).padStart(6, '0');
+  })();
+</script>
+
+<script>
+  const links = document.querySelectorAll('.geo-menu-link');
+  links.forEach((link) => {
+    link.addEventListener('click', () => {
+      links.forEach((l) => l.classList.remove('is-active'));
+      link.classList.add('is-active');
+    });
+  });
+
+  if (window.location.hash) {
+    const active = document.querySelector(`.geo-menu-link[href="${window.location.hash}"]`);
+    active?.classList.add('is-active');
+  } else {
+    document.querySelector('.geo-menu-link')?.classList.add('is-active');
+  }
+</script>

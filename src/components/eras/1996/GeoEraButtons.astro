@@ -1,0 +1,14 @@
+---
+import { useTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+<nav class="geo-era-btns" aria-label="Navigate between eras">
+  <a href={`/${locale}/1986`} class="geo-era-btn geo-era-btn--green">{t.era1996.go_1986}</a>
+  <a href={`/${locale}/2006`} class="geo-era-btn geo-era-btn--orange">{t.era1996.go_2006}</a>
+</nav>

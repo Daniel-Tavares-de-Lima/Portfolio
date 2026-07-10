@@ -5,7 +5,7 @@ export const ERAS = {
     seoTitle: { pt: 'BBS Edition', en: 'BBS Edition' },
   },
   '1996': {
-    status: 'placeholder',
+    status: 'ready',
     label: '1996',
     seoTitle: { pt: 'GeoCities Edition', en: 'GeoCities Edition' },
   },

@@ -1,0 +1,42 @@
+---
+import { useTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+<div class="geo-loader" id="geo-loader" aria-live="polite">
+  <p id="geo-loader-text">{t.era1996.loading}</p>
+  <div class="geo-loader__bar">
+    <div class="geo-loader__fill" id="geo-loader-fill"></div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ loadingText: t.era1996.loading, loadingImages: t.era1996.loading_images }}>
+  (function () {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const loader = document.getElementById('geo-loader');
+    if (!loader || reduced) {
+      loader?.classList.add('is-hidden');
+      return;
+    }
+
+    const fill = document.getElementById('geo-loader-fill');
+    const text = document.getElementById('geo-loader-text');
+    let progress = 0;
+
+    const tick = setInterval(() => {
+      progress += Math.random() * 12 + 3;
+      if (progress >= 55 && text) text.textContent = loadingImages;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(tick);
+        setTimeout(() => loader.classList.add('is-hidden'), 300);
+      }
+      if (fill) fill.style.width = progress + '%';
+    }, 120);
+  })();
+</script>

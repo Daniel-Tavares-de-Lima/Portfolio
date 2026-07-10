@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../BaseLayout.astro';
+import GeoLoader from '../../components/eras/1996/GeoLoader.astro';
+import GeoBanner from '../../components/eras/1996/GeoBanner.astro';
+import GeoMarquee from '../../components/eras/1996/GeoMarquee.astro';
+import GeoEraButtons from '../../components/eras/1996/GeoEraButtons.astro';
+import GeoSidebar from '../../components/eras/1996/GeoSidebar.astro';
+import GeoContent from '../../components/eras/1996/GeoContent.astro';
+import '../../styles/eras/1996.css';
+import type { Locale, EraYear } from '../../config/eras';
+import { useTranslations } from '../../i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  year: EraYear;
+}
+
+const { title, description, locale, year } = Astro.props;
+const t = useTranslations(locale);
+---
+<BaseLayout {title} {description} {locale} year={year}>
+  <slot name="timeline" />
+  <div class="era-1996">
+    <GeoLoader locale={locale} />
+    <GeoBanner locale={locale} />
+    <GeoMarquee locale={locale} />
+    <GeoEraButtons locale={locale} />
+    <div class="geo-layout">
+      <GeoSidebar locale={locale} year={year} />
+      <GeoContent locale={locale} />
+    </div>
+    <footer class="geo-footer">
+      © 1996 {title.split(' — ')[0]} · {t.era1996.hand_coded} · {t.era1996.guestbook}
+    </footer>
+  </div>
+</BaseLayout>

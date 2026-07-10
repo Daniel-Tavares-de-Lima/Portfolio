@@ -1,0 +1,461 @@
+.era-1996 {
+  background: #663399;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.03) 0,
+      rgba(255, 255, 255, 0.03) 2px,
+      transparent 2px,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(0, 0, 0, 0.08) 0,
+      rgba(0, 0, 0, 0.08) 3px,
+      transparent 3px,
+      transparent 12px
+    );
+  min-height: 100vh;
+  font-family: 'Times New Roman', Times, serif;
+  color: #000;
+}
+
+.geo-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #c0c0c0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.geo-loader.is-hidden {
+  display: none;
+}
+
+.geo-loader__bar {
+  width: 240px;
+  height: 20px;
+  border: 2px inset #808080;
+  background: #fff;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.geo-loader__fill {
+  height: 100%;
+  width: 0%;
+  background: #000080;
+  transition: width 0.1s linear;
+}
+
+.geo-flame {
+  height: 12px;
+  background: linear-gradient(90deg, #ff0000, #ff6600, #ffcc00, #ff6600, #ff0000);
+  background-size: 200% 100%;
+  animation: flame-scroll 1s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .geo-flame { animation: none; }
+  .geo-loader { display: none !important; }
+}
+
+@keyframes flame-scroll {
+  0% { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.geo-banner {
+  background: #0000aa;
+  border: 4px solid #ff00ff;
+  margin: 0.5rem 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.geo-banner h1 {
+  color: #ff0000;
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  text-shadow: 2px 2px #ffff00;
+  margin: 0.25rem 0;
+}
+
+.geo-banner .tagline {
+  color: #ffff00;
+  font-size: 0.85rem;
+  margin: 0.25rem 0;
+}
+
+.geo-banner .subtitle {
+  color: #00ff00;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.geo-fire {
+  display: inline-block;
+  animation: geo-blink 0.8s step-end infinite;
+}
+
+@keyframes geo-blink {
+  50% { opacity: 0.3; }
+}
+
+.geo-marquee-wrap {
+  background: #000;
+  border: 2px solid #ff00ff;
+  margin: 0 1rem;
+  overflow: hidden;
+}
+
+.geo-marquee {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  padding: 0.35rem 0;
+  white-space: nowrap;
+  animation: marquee-96 18s linear infinite;
+}
+
+@keyframes marquee-96 {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .geo-marquee { animation: none; transform: none; text-align: center; }
+  .geo-fire, .geo-blink, .geo-mail-blink { animation: none !important; }
+}
+
+.geo-era-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+}
+
+.geo-era-btn {
+  padding: 0.6rem 1rem;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-decoration: none;
+  border: 3px outset #ccc;
+  text-align: center;
+}
+
+.geo-era-btn--green {
+  background: #00cc00;
+  color: #000;
+}
+
+.geo-era-btn--orange {
+  background: #ff9900;
+  color: #000;
+}
+
+.geo-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.geo-sidebar {
+  flex: 0 0 180px;
+  min-width: 160px;
+}
+
+.geo-menu-box {
+  background: #0000aa;
+  border: 3px solid #ff00ff;
+  padding: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.geo-menu-title {
+  color: #ffff00;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.geo-menu-link {
+  display: block;
+  background: #000080;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.35rem 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-align: center;
+  border: 2px outset #6666cc;
+}
+
+.geo-menu-link:hover,
+.geo-menu-link.is-active {
+  background: #ff00ff;
+  color: #ffff00;
+}
+
+.geo-menu-link.is-active::after {
+  content: ' ✦';
+  animation: geo-blink 1s step-end infinite;
+}
+
+.geo-counter {
+  background: #000;
+  border: 2px inset #666;
+  padding: 0.5rem;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.geo-counter__label {
+  color: #ffff00;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.geo-counter__digits {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 1.25rem;
+  letter-spacing: 0.15em;
+}
+
+.geo-mail {
+  background: #fff;
+  border: 2px inset #999;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.geo-mail-icon {
+  font-size: 1.5rem;
+  display: inline-block;
+  animation: mail-spin 2s linear infinite;
+}
+
+@keyframes mail-spin {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.geo-mail-text {
+  color: #ff0000;
+  font-size: 0.65rem;
+  font-weight: bold;
+  animation: geo-blink 1s step-end infinite;
+}
+
+.geo-lang {
+  display: block;
+  margin-top: 0.5rem;
+  background: #c0c0c0;
+  border: 2px outset #fff;
+  padding: 0.25rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+}
+
+.geo-main {
+  flex: 1;
+  min-width: 280px;
+}
+
+.geo-panel {
+  background: #fff;
+  border: 4px solid #ff00ff;
+  outline: 3px solid #0000aa;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.geo-panel h2 {
+  color: #ff0000;
+  text-align: center;
+  font-size: 1.25rem;
+  border-bottom: 2px dashed #0000aa;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.geo-panel h2::before,
+.geo-panel h2::after {
+  content: ' ☆ ';
+  color: #ff00ff;
+}
+
+.geo-about-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.geo-avatar-wrap {
+  border: 4px solid #ffff00;
+  padding: 4px;
+  background: #fff;
+  position: relative;
+}
+
+.geo-avatar-wrap::before {
+  content: '✦';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  color: #ffff00;
+  animation: geo-blink 1s step-end infinite;
+}
+
+.geo-avatar {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+.geo-name {
+  color: #ff6600;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.geo-role {
+  color: #0000aa;
+  font-weight: bold;
+  margin: 0.25rem 0;
+}
+
+.geo-bio {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+.geo-location {
+  color: #ff0000;
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+.geo-job {
+  border: 2px inset #ccc;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  background: #f0f0ff;
+}
+
+.geo-job h3 {
+  color: #0000aa;
+  font-size: 1rem;
+}
+
+.geo-job .role {
+  color: #ff6600;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.geo-job .meta {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.geo-job ul {
+  margin-top: 0.5rem;
+  padding-left: 1.25rem;
+  font-size: 0.8rem;
+}
+
+.geo-project {
+  border: 2px dashed #ff00ff;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background: #ffffcc;
+}
+
+.geo-project h3 {
+  color: #000080;
+  font-size: 0.95rem;
+}
+
+.geo-project p {
+  font-size: 0.8rem;
+  margin: 0.25rem 0;
+}
+
+.geo-project a {
+  color: #ff0000;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.geo-skills span {
+  display: inline-block;
+  background: #0000aa;
+  color: #fff;
+  padding: 0.15rem 0.4rem;
+  margin: 0.15rem;
+  font-size: 0.7rem;
+  border: 1px outset #6666ff;
+}
+
+.geo-footer {
+  text-align: center;
+  padding: 1rem;
+  color: #ffff00;
+  font-size: 0.75rem;
+  background: #000080;
+  border-top: 3px solid #ff00ff;
+}
+
+.geo-contact a {
+  display: inline-block;
+  background: #00cc00;
+  color: #000;
+  padding: 0.35rem 0.75rem;
+  margin: 0.25rem;
+  font-weight: bold;
+  text-decoration: none;
+  border: 2px outset #66ff66;
+  font-size: 0.8rem;
+}
+
+.geo-satre-badge {
+  display: inline-block;
+  background: #ff0000;
+  color: #fff;
+  font-size: 0.65rem;
+  padding: 0.1rem 0.4rem;
+  animation: geo-blink 1.5s step-end infinite;
+}
+
+@media (max-width: 640px) {
+  .geo-sidebar {
+    flex: 1 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .geo-menu-box,
+  .geo-counter,
+  .geo-mail {
+    flex: 1 1 140px;
+  }
+}

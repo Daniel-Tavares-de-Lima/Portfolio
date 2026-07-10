@@ -1,0 +1,13 @@
+---
+import { useTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+<div class="geo-marquee-wrap">
+  <p class="geo-marquee">{t.era1996.marquee}</p>
+</div>

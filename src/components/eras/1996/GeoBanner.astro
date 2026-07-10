@@ -1,0 +1,19 @@
+---
+import { useTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+<div class="geo-flame" aria-hidden="true"></div>
+<header class="geo-banner">
+  <span class="geo-fire">🔥</span>
+  <h1>{t.era1996.site_title}</h1>
+  <span class="geo-fire">🔥</span>
+  <p class="tagline">{t.era1996.tagline}</p>
+  <p class="subtitle">{t.era1996.subtitle}</p>
+</header>
+<div class="geo-flame" aria-hidden="true"></div>
