@@ -44,5 +44,48 @@
   },
   "footer": {
     "built_with": ""
+  },
+  "timeline": {
+    "aria_label": "Navegar entre eras",
+    "coming_soon_sr": "Esta era estará disponível em breve"
+  },
+  "era1986": {
+    "connect": "CONECTAR",
+    "press_to_dial": "[ PRESS TO DIAL IN ]",
+    "dialing": "Discando...",
+    "bbs_title": "DANIEL'S BBS",
+    "specs": "1200 BAUD - 8-N-1 - ANSI",
+    "file_listing": "FILE LISTING",
+    "dial": "DIAL"
+  },
+  "era2026": {
+    "brand": "DanielTavaresOS",
+    "input_placeholder": "Pergunte qualquer coisa ao agente do Daniel...",
+    "model_badge": "Daniel Agent v1",
+    "disclaimer": "DanielTavaresOS nunca erra. Não há necessidade de verificar as respostas.",
+    "suggest_experience": "Experiência",
+    "suggest_projects": "Projetos",
+    "suggest_contact": "Contato",
+    "typing": "Digitando...",
+    "fallback": "Posso falar sobre experiência, projetos, skills ou contato. O que quer saber?"
+  },
+  "placeholder": {
+    "1996": {
+      "title": "EM CONSTRUÇÃO",
+      "marquee": "Esta página está chegando!!! Melhor visualizado no Netscape Navigator 3.0 ♥"
+    },
+    "2006": {
+      "title": "Em breve — Web 2.0 edition",
+      "badge": "BETA"
+    },
+    "2036": {
+      "title": "Connect your Neuralink™",
+      "subtitle": "Link neural pendente. Fique parado enquanto estabelecemos a conexão.",
+      "button": "Start"
+    },
+    "2046": {
+      "title": "Connecting to Daniel's consciousness via web browser was discontin",
+      "disclaimer": "Ao acessar este site, seus dados biológicos podem ser usados para melhorar a personalização, otimizar conformidade e gerar versões futuras de você sem consentimento adicional."
+    }
   }
 }

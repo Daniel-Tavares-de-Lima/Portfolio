@@ -1,0 +1,44 @@
+---
+import { useTranslations, type Locale } from '../../../i18n';
+import type { EraYear } from '../../../config/eras';
+
+interface Props {
+  locale: Locale;
+  year: EraYear;
+}
+
+const { locale, year } = Astro.props;
+const t = useTranslations(locale);
+---
+<div class={`placeholder placeholder--${year}`} role="status">
+  <span class="sr-only">{t.timeline.coming_soon_sr}</span>
+  <div class="placeholder__inner">
+    {year === '1996' && (
+      <>
+        <h1 class="blink">{t.placeholder['1996'].title}</h1>
+        <p class="marquee">{t.placeholder['1996'].marquee}</p>
+        <p>VISITORS: 013371</p>
+      </>
+    )}
+    {year === '2006' && (
+      <div class="card">
+        <span class="badge">{t.placeholder['2006'].badge}</span>
+        <h1>{t.placeholder['2006'].title}</h1>
+      </div>
+    )}
+    {year === '2036' && (
+      <>
+        <p>STEP 1 OF 1</p>
+        <h1>{t.placeholder['2036'].title}</h1>
+        <p>{t.placeholder['2036'].subtitle}</p>
+        <button disabled title={t.timeline.coming_soon_sr}>{t.placeholder['2036'].button}</button>
+      </>
+    )}
+    {year === '2046' && (
+      <>
+        <h1 class="glitch">{t.placeholder['2046'].title}</h1>
+        <p class="fine-print">{t.placeholder['2046'].disclaimer}</p>
+      </>
+    )}
+  </div>
+</div>

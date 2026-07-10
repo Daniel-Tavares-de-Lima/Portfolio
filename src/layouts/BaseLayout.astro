@@ -1,17 +1,18 @@
 ---
-import '../styles/global.css';
-
 interface Props {
   title: string;
   description: string;
   locale: 'pt' | 'en';
+  year?: string;
+  noindex?: boolean;
 }
 
-const { title, description, locale } = Astro.props;
+const { title, description, locale, year, noindex } = Astro.props;
 const siteUrl = Astro.site?.toString() ?? 'https://daniel-tavares.vercel.app';
+const ogUrl = year ? `${siteUrl}/${locale}/${year}` : `${siteUrl}/${locale}`;
 ---
 <!DOCTYPE html>
-<html lang={locale}>
+<html lang={locale} class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,13 +21,16 @@ const siteUrl = Astro.site?.toString() ?? 'https://daniel-tavares.vercel.app';
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content={`${siteUrl}/${locale}`} />
+  <meta property="og:url" content={ogUrl} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <slot name="head" />
   <script is:inline>
     (function () {
+      document.documentElement.classList.remove('no-js');
       const stored = localStorage.getItem('theme');
       if (stored) {
         document.documentElement.setAttribute('data-theme', stored);

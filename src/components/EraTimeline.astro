@@ -1,0 +1,32 @@
+---
+import '../styles/eras/timeline.css';
+import { ERA_YEARS, type EraYear } from '../config/eras';
+import { useTranslations, type Locale } from '../i18n';
+
+interface Props {
+  currentYear: EraYear;
+  locale: Locale;
+}
+
+const { currentYear, locale } = Astro.props;
+const t = useTranslations(locale);
+---
+<nav
+  class={`era-timeline timeline--${currentYear}`}
+  aria-label={t.timeline.aria_label}
+  role="tablist"
+>
+  <div class="era-timeline__track">
+    {ERA_YEARS.map((year) => (
+      <a
+        href={`/${locale}/${year}`}
+        class="era-timeline__tab"
+        role="tab"
+        aria-selected={year === currentYear ? 'true' : 'false'}
+        aria-current={year === currentYear ? 'page' : undefined}
+      >
+        {year}
+      </a>
+    ))}
+  </div>
+</nav>

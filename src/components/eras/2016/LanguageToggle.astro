@@ -1,10 +1,10 @@
 ---
-interface Props { locale: 'pt' | 'en'; }
-const { locale } = Astro.props;
+interface Props { locale: 'pt' | 'en'; year: string; }
+const { locale, year } = Astro.props;
 const other = locale === 'pt' ? 'en' : 'pt';
 const label = locale === 'pt' ? 'EN' : 'PT';
 ---
-<a href={`/${other}${Astro.url.hash}`} class="lang-toggle" aria-label={`Switch to ${other}`}>
+<a href={`/${other}/${year}${Astro.url.hash}`} class="lang-toggle" aria-label={`Switch to ${other}`}>
   {label}
 </a>
 

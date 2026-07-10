@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../BaseLayout.astro';
+import Header from '../../components/eras/2016/Header.astro';
+import Hero from '../../components/eras/2016/Hero.astro';
+import About from '../../components/eras/2016/About.astro';
+import ExperienceTimeline from '../../components/eras/2016/ExperienceTimeline.astro';
+import EducationCards from '../../components/eras/2016/EducationCards.astro';
+import SatreSection from '../../components/eras/2016/SatreSection.astro';
+import ProjectGrid from '../../components/eras/2016/ProjectGrid.astro';
+import SkillGrid from '../../components/eras/2016/SkillGrid.astro';
+import AiSection from '../../components/eras/2016/AiSection.astro';
+import Contact from '../../components/eras/2016/Contact.astro';
+import Footer from '../../components/eras/2016/Footer.astro';
+import '../../styles/global.css';
+import type { Locale, EraYear } from '../../config/eras';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  year: EraYear;
+}
+
+const { title, description, locale, year } = Astro.props;
+---
+<BaseLayout {title} {description} {locale} year={year}>
+  <slot name="timeline" />
+  <Header locale={locale} year={year} />
+  <main>
+    <Hero locale={locale} />
+    <About locale={locale} />
+    <ExperienceTimeline locale={locale} />
+    <EducationCards locale={locale} />
+    <SatreSection locale={locale} />
+    <ProjectGrid locale={locale} />
+    <SkillGrid locale={locale} />
+    <AiSection locale={locale} />
+    <Contact locale={locale} />
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>

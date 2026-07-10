@@ -44,5 +44,48 @@
   },
   "footer": {
     "built_with": "Built with Astro"
+  },
+  "timeline": {
+    "aria_label": "Navigate between eras",
+    "coming_soon_sr": "This era will be available soon"
+  },
+  "era1986": {
+    "connect": "CONNECT",
+    "press_to_dial": "[ PRESS TO DIAL IN ]",
+    "dialing": "Dialing...",
+    "bbs_title": "DANIEL'S BBS",
+    "specs": "1200 BAUD - 8-N-1 - ANSI",
+    "file_listing": "FILE LISTING",
+    "dial": "DIAL"
+  },
+  "era2026": {
+    "brand": "DanielTavaresOS",
+    "input_placeholder": "Ask Daniel's agent anything...",
+    "model_badge": "Daniel Agent v1",
+    "disclaimer": "DanielTavaresOS never makes mistakes. There's no need to double-check responses.",
+    "suggest_experience": "Experience",
+    "suggest_projects": "Projects",
+    "suggest_contact": "Contact",
+    "typing": "Typing...",
+    "fallback": "I can tell you about experience, projects, skills, or contact. What would you like to know?"
+  },
+  "placeholder": {
+    "1996": {
+      "title": "UNDER CONSTRUCTION",
+      "marquee": "This page is coming soon!!! Best viewed in Netscape Navigator 3.0 ♥"
+    },
+    "2006": {
+      "title": "Coming soon — Web 2.0 edition",
+      "badge": "BETA"
+    },
+    "2036": {
+      "title": "Connect your Neuralink™",
+      "subtitle": "Neural link pending. Stay still while we establish the connection.",
+      "button": "Start"
+    },
+    "2046": {
+      "title": "Connecting to Daniel's consciousness via web browser was discontin",
+      "disclaimer": "By accessing this site your biological data may be used to improve personalization, optimize compliance and generate future versions of you without additional consent."
+    }
   }
 }

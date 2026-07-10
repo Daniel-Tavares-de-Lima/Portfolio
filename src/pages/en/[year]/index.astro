@@ -1,0 +1,45 @@
+---
+import EraTimeline from '../../../components/EraTimeline.astro';
+import Era1986Layout from '../../../layouts/eras/Era1986Layout.astro';
+import Era2016Layout from '../../../layouts/eras/Era2016Layout.astro';
+import Era2026Layout from '../../../layouts/eras/Era2026Layout.astro';
+import EraPlaceholderLayout from '../../../layouts/eras/EraPlaceholderLayout.astro';
+import { ERA_YEARS, isEraYear, getEraMeta, type EraYear } from '../../../config/eras';
+import profile from '../../../data/profile.json';
+
+export function getStaticPaths() {
+  return ERA_YEARS.map((year) => ({ params: { year } }));
+}
+
+const locale = 'en' as const;
+const { year: yearParam } = Astro.params;
+
+if (!yearParam || !isEraYear(yearParam)) {
+  return new Response(null, { status: 404, statusText: 'Not Found' });
+}
+
+const year = yearParam as EraYear;
+const era = getEraMeta(year);
+const title = `${profile.name} — ${era.seoTitle.en} (${year})`;
+const description = profile.bio.en;
+---
+{era.status === 'ready' && year === '1986' && (
+  <Era1986Layout title={title} description={description} locale={locale} year={year}>
+    <EraTimeline slot="timeline" currentYear={year} locale={locale} />
+  </Era1986Layout>
+)}
+{era.status === 'ready' && year === '2016' && (
+  <Era2016Layout title={title} description={description} locale={locale} year={year}>
+    <EraTimeline slot="timeline" currentYear={year} locale={locale} />
+  </Era2016Layout>
+)}
+{era.status === 'ready' && year === '2026' && (
+  <Era2026Layout title={title} description={description} locale={locale} year={year}>
+    <EraTimeline slot="timeline" currentYear={year} locale={locale} />
+  </Era2026Layout>
+)}
+{era.status === 'placeholder' && (
+  <EraPlaceholderLayout title={title} description={description} locale={locale} year={year}>
+    <EraTimeline slot="timeline" currentYear={year} locale={locale} />
+  </EraPlaceholderLayout>
+)}

@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import profile from '../../../data/profile.json';
+import experience from '../../../data/experience.json';
+import { useTranslations, type Locale } from '../../../i18n';
+import TerminalSection from './TerminalSection.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const asciiName = `
+╔══════════════════════════════╗
+║   ${profile.name.toUpperCase()}   ║
+║   ${profile.title[locale].toUpperCase()}   ║
+╚══════════════════════════════╝`;
+
+const experienceText = experience
+  .map((job, i) => {
+    const highlight = job.highlights[locale][0] ?? '';
+    return `${i + 1}. ${job.company} — ${job.role[locale]}\n   ${job.period[locale]}\n   ${highlight}`;
+  })
+  .join('\n\n');
+
+const projectLines = projects
+  .map((p) => `  ${p.slug.toUpperCase().replace(/-/g, '_')}.PRJ  —  ${p.data.title[locale]}`)
+  .join('\n');
+
+const contactText = `${t.era1986.dial}: ${profile.links.email.replace('mailto:', '')}\nLINKEDIN: ${profile.links.linkedin}\nGITHUB: ${profile.links.github}`;
+---
+<section class="bbs-section" id="hero">
+  <h2>SYS/INFO</h2>
+  <TerminalSection text={asciiName} />
+</section>
+
+<section class="bbs-section" id="about">
+  <h2>{t.nav.about.toUpperCase()}</h2>
+  <TerminalSection text={profile.bio[locale]} />
+</section>
+
+<section class="bbs-section" id="experience">
+  <h2>{t.nav.experience.toUpperCase()}</h2>
+  <TerminalSection text={experienceText} />
+</section>
+
+<section class="bbs-section" id="projects">
+  <h2>{t.era1986.file_listing}</h2>
+  <pre class="bbs-pre bbs-file">{projectLines}</pre>
+</section>
+
+<section class="bbs-section" id="contact">
+  <h2>{t.nav.contact.toUpperCase()}</h2>
+  <TerminalSection text={contactText} />
+</section>

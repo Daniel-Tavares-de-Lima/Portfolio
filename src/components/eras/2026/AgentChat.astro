@@ -1,0 +1,170 @@
+---
+import { getCollection } from 'astro:content';
+import profile from '../../../data/profile.json';
+import experience from '../../../data/experience.json';
+import skills from '../../../data/skills.json';
+import { useTranslations, type Locale } from '../../../i18n';
+import { type ChatResponses } from '../../../data/chat-responses';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 5);
+
+const experienceSummary = experience
+  .map((job) => `• ${job.company} — ${job.role[locale]} (${job.period[locale]})`)
+  .join('\n');
+
+const projectsSummary = projects
+  .map((p) => `• ${p.data.title[locale]}${p.data.github ? ` — ${p.data.github}` : ''}`)
+  .join('\n');
+
+const skillsSummary = [
+  ...skills.languages,
+  ...skills.frameworks,
+  ...skills.concepts[locale],
+].map((s) => `• ${s}`).join('\n');
+
+const contactSummary = [
+  `Email: ${profile.links.email.replace('mailto:', '')}`,
+  `LinkedIn: ${profile.links.linkedin}`,
+  `GitHub: ${profile.links.github}`,
+].join('\n');
+
+const responses: ChatResponses = {
+  experience: {
+    pt: `Experiência profissional:\n\n${experienceSummary}`,
+    en: `Professional experience:\n\n${experienceSummary}`,
+  },
+  projects: {
+    pt: `Projetos em destaque:\n\n${projectsSummary}`,
+    en: `Featured projects:\n\n${projectsSummary}`,
+  },
+  skills: {
+    pt: `Principais skills:\n\n${skillsSummary}`,
+    en: `Key skills:\n\n${skillsSummary}`,
+  },
+  contact: {
+    pt: `Contato:\n\n${contactSummary}`,
+    en: `Contact:\n\n${contactSummary}`,
+  },
+  fallback: {
+    pt: t.era2026.fallback,
+    en: t.era2026.fallback,
+  },
+};
+
+const suggestions = [
+  t.era2026.suggest_experience,
+  t.era2026.suggest_projects,
+  t.era2026.suggest_contact,
+];
+---
+<div class="agent-shell">
+  <div class="agent-orb-ring" aria-hidden="true"></div>
+  <div class="agent-orb" aria-hidden="true"></div>
+  <h1 class="agent-brand">
+    {t.era2026.brand}<span>²⁶</span>
+  </h1>
+
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-messages" id="chat-messages" role="log" aria-live="polite"></div>
+    <form class="chat-form" id="chat-form">
+      <label for="chat-input" class="sr-only">{t.era2026.input_placeholder}</label>
+      <input
+        type="text"
+        id="chat-input"
+        class="chat-input"
+        placeholder={t.era2026.input_placeholder}
+        autocomplete="off"
+      />
+      <span class="model-badge">{t.era2026.model_badge}</span>
+      <button type="submit" class="chat-submit" aria-label="Send">↑</button>
+    </form>
+    <div class="chat-suggestions">
+      {suggestions.map((label) => (
+        <button type="button" class="chat-suggest" data-suggest={label}>{label}</button>
+      ))}
+    </div>
+  </div>
+
+  <p class="agent-disclaimer">{t.era2026.disclaimer}</p>
+</div>
+
+<script is:inline define:vars={{ responses, locale, typingLabel: t.era2026.typing }}>
+  const form = document.getElementById('chat-form');
+  const input = document.getElementById('chat-input');
+  const messages = document.getElementById('chat-messages');
+
+  const patterns = {
+    experience: /experi[eê]ncia|experience|trabalho|work|emprego|job/i,
+    projects: /projeto|project|satre|github|app/i,
+    skills: /skill|tecnologia|stack|ferramenta|tool/i,
+    contact: /contato|contact|email|linkedin|falar/i,
+  };
+
+  function matchKey(text) {
+    for (const [key, pattern] of Object.entries(patterns)) {
+      if (pattern.test(text)) return key;
+    }
+    return 'fallback';
+  }
+
+  function addMessage(role, text) {
+    const el = document.createElement('div');
+    el.className = `chat-msg chat-msg--${role}`;
+    el.textContent = text;
+    messages?.appendChild(el);
+    messages?.scrollTo(0, messages.scrollHeight);
+  }
+
+  function reply(text) {
+    if (!text.trim()) return;
+    addMessage('user', text.trim());
+    if (input) input.value = '';
+
+    const typing = document.createElement('div');
+    typing.className = 'chat-msg chat-msg--agent chat-msg--typing';
+    typing.textContent = typingLabel;
+    messages?.appendChild(typing);
+    messages?.scrollTo(0, messages.scrollHeight);
+
+    const key = matchKey(text);
+    const answer = responses[key][locale];
+
+    setTimeout(() => {
+      typing.remove();
+      addMessage('agent', answer);
+    }, 1500);
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    reply(input?.value ?? '');
+  });
+
+  document.querySelectorAll('.chat-suggest').forEach((btn) => {
+    btn.addEventListener('click', () => reply(btn.getAttribute('data-suggest') ?? ''));
+  });
+</script>
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../BaseLayout.astro';
+import ConnectScreen from '../../components/eras/1986/ConnectScreen.astro';
+import BbsPortfolio from '../../components/eras/1986/BbsPortfolio.astro';
+import '../../styles/eras/1986.css';
+import type { Locale, EraYear } from '../../config/eras';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  year: EraYear;
+}
+
+const { title, description, locale, year } = Astro.props;
+---
+<BaseLayout {title} {description} {locale} year={year}>
+  <link slot="head" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+  <slot name="timeline" />
+  <div class="era-1986">
+    <ConnectScreen locale={locale} />
+    <div class="terminal-content" id="bbs-content">
+      <BbsPortfolio locale={locale} />
+    </div>
+  </div>
+</BaseLayout>
+
+<noscript>
+  <style>
+    .connect-screen { display: none !important; }
+    .terminal-content { display: block !important; }
+  </style>
+</noscript>

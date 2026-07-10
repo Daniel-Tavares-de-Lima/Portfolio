@@ -1,0 +1,141 @@
+.era-1986 {
+  background: #000;
+  color: #00ff41;
+  font-family: 'VT323', monospace;
+  min-height: 100vh;
+  position: relative;
+}
+
+.era-1986::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .era-1986::after {
+    display: none;
+  }
+}
+
+.connect-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 4rem);
+  text-align: center;
+  padding: 2rem;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+}
+
+.connect-screen.is-hidden {
+  display: none;
+}
+
+.connect-screen h1 {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.connect-screen .specs {
+  opacity: 0.85;
+  margin-bottom: 2rem;
+}
+
+.connect-btn {
+  background: #00ff41;
+  color: #000;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+}
+
+.connect-btn:hover {
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.8);
+}
+
+.connect-hint {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.dialing-msg {
+  min-height: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.terminal-content {
+  display: none;
+  padding: 2rem 1.5rem 4rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.terminal-content.is-visible {
+  display: block;
+}
+
+.bbs-section {
+  margin-bottom: 2.5rem;
+  border: 1px solid #00ff41;
+  padding: 1rem;
+}
+
+.bbs-section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.bbs-section h2::before {
+  content: '> ';
+}
+
+.bbs-pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.bbs-list {
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+
+.bbs-list li {
+  margin-bottom: 0.75rem;
+}
+
+.bbs-file {
+  font-family: inherit;
+  color: #00ff41;
+}
+
+.no-js .connect-screen {
+  display: none;
+}
+
+.no-js .terminal-content {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connect-btn {
+    box-shadow: none;
+  }
+}

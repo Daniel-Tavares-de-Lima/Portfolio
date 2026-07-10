@@ -1,0 +1,34 @@
+---
+interface Props {
+  text: string;
+  instant?: boolean;
+}
+
+const { text, instant = false } = Astro.props;
+const id = `tw-${Math.random().toString(36).slice(2, 9)}`;
+---
+<pre class="bbs-pre typewriter" id={id} data-text={text} data-instant={instant ? 'true' : 'false'}></pre>
+
+<script>
+  document.querySelectorAll('.typewriter').forEach((el) => {
+    const htmlEl = el as HTMLElement;
+    const fullText = htmlEl.dataset.text ?? '';
+    const instant = htmlEl.dataset.instant === 'true';
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (instant || reducedMotion) {
+      htmlEl.textContent = fullText;
+      return;
+    }
+
+    let i = 0;
+    const interval = setInterval(() => {
+      htmlEl.textContent = fullText.slice(0, i) + '_';
+      i++;
+      if (i > fullText.length) {
+        clearInterval(interval);
+        htmlEl.textContent = fullText;
+      }
+    }, 18);
+  });
+</script>

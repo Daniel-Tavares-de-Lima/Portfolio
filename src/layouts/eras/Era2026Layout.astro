@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../BaseLayout.astro';
+import AgentChat from '../../components/eras/2026/AgentChat.astro';
+import StaticSections from '../../components/eras/2026/StaticSections.astro';
+import '../../styles/eras/2026.css';
+import type { Locale, EraYear } from '../../config/eras';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  year: EraYear;
+}
+
+const { title, description, locale, year } = Astro.props;
+---
+<BaseLayout {title} {description} {locale} year={year}>
+  <slot name="timeline" />
+  <div class="era-2026">
+    <AgentChat locale={locale} />
+    <StaticSections locale={locale} />
+  </div>
+</BaseLayout>

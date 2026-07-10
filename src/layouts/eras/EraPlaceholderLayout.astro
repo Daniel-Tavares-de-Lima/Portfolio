@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../BaseLayout.astro';
+import ComingSoon from '../../components/eras/placeholder/ComingSoon.astro';
+import '../../styles/eras/placeholder.css';
+import type { Locale, EraYear } from '../../config/eras';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  year: EraYear;
+  noindex?: boolean;
+}
+
+const { title, description, locale, year, noindex = true } = Astro.props;
+---
+<BaseLayout {title} {description} {locale} year={year} noindex={noindex}>
+  <slot name="timeline" />
+  <ComingSoon locale={locale} year={year} />
+</BaseLayout>
