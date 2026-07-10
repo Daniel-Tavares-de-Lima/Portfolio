@@ -30,7 +30,7 @@ export const ERAS = {
     seoTitle: { pt: 'Neural Edition', en: 'Neural Edition' },
   },
   '2046': {
-    status: 'placeholder',
+    status: 'ready',
     label: '2046',
     seoTitle: { pt: 'Consciousness Edition', en: 'Consciousness Edition' },
   },

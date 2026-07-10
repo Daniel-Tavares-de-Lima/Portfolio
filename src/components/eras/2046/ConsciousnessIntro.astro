@@ -1,0 +1,42 @@
+---
+import { useTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+<div class="consciousness-intro" id="consciousness-intro" role="button" tabindex="0" aria-label={t.era2046.tap_to_continue}>
+  <p class="consciousness-glitch">{t.era2046.glitch_line}</p>
+  <p class="consciousness-tap">{t.era2046.tap_to_continue}</p>
+</div>
+
+<script is:inline>
+  (function () {
+    const intro = document.getElementById('consciousness-intro');
+    const stream = document.getElementById('consciousness-stream');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function reveal() {
+      intro?.classList.add('is-hidden');
+      stream?.classList.add('is-visible');
+    }
+
+    if (reduced) {
+      reveal();
+      return;
+    }
+
+    intro?.addEventListener('click', reveal);
+    intro?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        reveal();
+      }
+    });
+
+    setTimeout(reveal, 4500);
+  })();
+</script>

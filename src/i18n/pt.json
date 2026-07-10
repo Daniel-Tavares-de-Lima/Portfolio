@@ -116,6 +116,16 @@
     "footer": "© 2036 DANIEL TAVARES",
     "location": "Recife, Pernambuco, Brasil"
   },
+  "era2046": {
+    "glitch_line": "Connecting to Daniel's consciousness via web browser was discontin",
+    "active_title": "Direct consciousness stream active",
+    "active_sub": "Browser protocol deprecated. Streaming neural identity data.",
+    "tap_to_continue": "Click to establish direct link",
+    "disclaimer": "Ao acessar este site, seus dados biológicos podem ser usados para melhorar a personalização, otimizar conformidade e gerar versões futuras de você sem consentimento adicional.",
+    "footer": "© 2046 DANIEL TAVARES",
+    "location": "Recife, Pernambuco, Brasil",
+    "module_prefix": "MEM_"
+  },
   "placeholder": {
     "1996": {
       "title": "EM CONSTRUÇÃO",

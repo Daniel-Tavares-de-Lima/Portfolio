@@ -6,7 +6,7 @@ import Era2006Layout from '../../../layouts/eras/Era2006Layout.astro';
 import Era2016Layout from '../../../layouts/eras/Era2016Layout.astro';
 import Era2026Layout from '../../../layouts/eras/Era2026Layout.astro';
 import Era2036Layout from '../../../layouts/eras/Era2036Layout.astro';
-import EraPlaceholderLayout from '../../../layouts/eras/EraPlaceholderLayout.astro';
+import Era2046Layout from '../../../layouts/eras/Era2046Layout.astro';
 import { ERA_YEARS, isEraYear, getEraMeta, type EraYear } from '../../../config/eras';
 import profile from '../../../data/profile.json';
 
@@ -56,8 +56,8 @@ const description = profile.bio.pt;
     <EraTimeline slot="timeline" currentYear={year} locale={locale} />
   </Era2036Layout>
 )}
-{era.status === 'placeholder' && (
-  <EraPlaceholderLayout title={title} description={description} locale={locale} year={year}>
+{era.status === 'ready' && year === '2046' && (
+  <Era2046Layout title={title} description={description} locale={locale} year={year}>
     <EraTimeline slot="timeline" currentYear={year} locale={locale} />
-  </EraPlaceholderLayout>
+  </Era2046Layout>
 )}

@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../BaseLayout.astro';
+import ConsciousnessIntro from '../../components/eras/2046/ConsciousnessIntro.astro';
+import ConsciousnessContent from '../../components/eras/2046/ConsciousnessContent.astro';
+import '../../styles/eras/2046.css';
+import type { Locale, EraYear } from '../../config/eras';
+import { useTranslations } from '../../i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  year: EraYear;
+}
+
+const { title, description, locale, year } = Astro.props;
+const t = useTranslations(locale);
+---
+<BaseLayout {title} {description} {locale} year={year}>
+  <slot name="timeline" />
+  <div class="era-2046">
+    <ConsciousnessIntro locale={locale} />
+    <ConsciousnessContent locale={locale} year={year} />
+    <p class="consciousness-disclaimer">{t.era2046.disclaimer}</p>
+    <footer class="consciousness-footer">{t.era2046.footer}</footer>
+  </div>
+</BaseLayout>
+
+<noscript>
+  <style>
+    .consciousness-intro { display: none !important; }
+    .consciousness-stream { display: block !important; }
+  </style>
+</noscript>

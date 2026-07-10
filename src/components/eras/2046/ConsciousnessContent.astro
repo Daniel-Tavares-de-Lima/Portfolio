@@ -1,0 +1,159 @@
+---
+import { getCollection } from 'astro:content';
+import profile from '../../../data/profile.json';
+import experience from '../../../data/experience.json';
+import education from '../../../data/education.json';
+import skills from '../../../data/skills.json';
+import aiTools from '../../../data/ai-tools.json';
+import satre from '../../../data/satre.json';
+import { useTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+  locale: Locale;
+  year: string;
+}
+
+const { locale, year } = Astro.props;
+const t = useTranslations(locale);
+const other = locale === 'pt' ? 'en' : 'pt';
+const prefix = t.era2046.module_prefix;
+
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const categoryLabels = {
+  professional: t.projects.category_professional,
+  academic: t.projects.category_academic,
+  personal: t.projects.category_personal,
+};
+
+const navItems = [
+  { href: '#about', label: t.nav.about },
+  { href: '#experience', label: t.nav.experience },
+  { href: '#education', label: t.nav.education },
+  { href: '#satre', label: t.nav.satre },
+  { href: '#projects', label: t.nav.projects },
+  { href: '#skills', label: t.nav.skills },
+  { href: '#ai', label: t.nav.ai },
+  { href: '#contact', label: t.nav.contact },
+];
+---
+<div class="consciousness-stream" id="consciousness-stream">
+  <header class="consciousness-header">
+    <h1>{t.era2046.active_title}</h1>
+    <p>{t.era2046.active_sub}</p>
+    <div class="consciousness-meta">
+      <nav class="consciousness-nav" aria-label="Sections">
+        {navItems.map((item) => (
+          <a href={item.href}>{item.label}</a>
+        ))}
+      </nav>
+      <a href={`/${other}/${year}`} class="consciousness-lang">{locale === 'pt' ? 'EN' : 'PT'}</a>
+    </div>
+  </header>
+
+  <section class="consciousness-block" id="about">
+    <h2><span>{prefix}</span>01 · {t.nav.about}</h2>
+    <div class="consciousness-about">
+      <img src={profile.avatar} alt={profile.name} class="consciousness-avatar" width="72" height="72" loading="lazy" />
+      <div>
+        <p class="consciousness-name">{profile.name}</p>
+        <p class="consciousness-role">{profile.title[locale]}</p>
+        <p class="consciousness-bio">{profile.bio[locale]}</p>
+        <p class="consciousness-location">{t.era2046.location}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="consciousness-block" id="experience">
+    <h2><span>{prefix}</span>02 · {t.nav.experience}</h2>
+    {experience.map((job) => (
+      <div class="consciousness-entry">
+        <h3>{job.company}</h3>
+        <p class="consciousness-role">{job.role[locale]}</p>
+        <p class="meta">{job.period[locale]} · {job.location}</p>
+        <ul>
+          {job.highlights[locale].slice(0, 3).map((h) => <li>{h}</li>)}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  <section class="consciousness-block" id="education">
+    <h2><span>{prefix}</span>03 · {t.nav.education}</h2>
+    {education.map((edu) => (
+      <div class="consciousness-entry">
+        <h3>{edu.institution}</h3>
+        <p class="consciousness-role">{edu.degree[locale]}</p>
+        <p class="meta">{edu.period[locale]} · {edu.status[locale]}</p>
+      </div>
+    ))}
+  </section>
+
+  <section class="consciousness-block" id="satre">
+    <h2>
+      <span>{prefix}</span>04 · {t.nav.satre}
+      <span class="consciousness-badge">{satre.status[locale]}</span>
+    </h2>
+    <p class="consciousness-role">{satre.fullName[locale]}</p>
+    <p class="consciousness-bio">{satre.tagline[locale]}</p>
+    <ul>
+      {satre.description[locale].map((line) => <li>{line}</li>)}
+    </ul>
+    {satre.github && (
+      <p><a href={satre.github} target="_blank" rel="noopener">{t.projects.view_github}</a></p>
+    )}
+  </section>
+
+  <section class="consciousness-block" id="projects">
+    <h2><span>{prefix}</span>05 · {t.nav.projects}</h2>
+    {projects.map((project) => (
+      <article class="consciousness-project">
+        <h3>{project.data.title[locale]}</h3>
+        <p>{project.data.description[locale]}</p>
+        <p>{categoryLabels[project.data.category]} · {project.data.stack.join(', ')}</p>
+        {project.data.github && (
+          <a href={project.data.github} target="_blank" rel="noopener">{t.projects.view_github}</a>
+        )}
+      </article>
+    ))}
+  </section>
+
+  <section class="consciousness-block" id="skills">
+    <h2><span>{prefix}</span>06 · {t.nav.skills}</h2>
+    <div class="consciousness-tags">
+      {[...skills.languages, ...skills.frameworks, ...skills.concepts[locale]].map((s) => (
+        <span class="consciousness-tag">{s}</span>
+      ))}
+    </div>
+  </section>
+
+  <section class="consciousness-block" id="ai">
+    <h2><span>{prefix}</span>07 · {t.nav.ai}</h2>
+    <div class="consciousness-tags">
+      {aiTools.tools.map((tool) => <span class="consciousness-tag">{tool}</span>)}
+    </div>
+    <ul>
+      {aiTools.useCases[locale].map((uc) => <li>{uc}</li>)}
+    </ul>
+  </section>
+
+  <section class="consciousness-block consciousness-contact" id="contact">
+    <h2><span>{prefix}</span>08 · {t.contact.title}</h2>
+    <a href={profile.links.email}>{profile.links.email.replace('mailto:', '')}</a>
+    <a href={profile.links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+    <a href={profile.links.github} target="_blank" rel="noopener">GitHub</a>
+    <a href={profile.cv} download>{t.contact.download_cv}</a>
+  </section>
+</div>
+
+<style>
+  .consciousness-block ul {
+    font-size: 0.85rem;
+    color: #475569;
+    padding-left: 1.1rem;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+  }
+</style>
