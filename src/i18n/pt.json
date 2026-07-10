@@ -85,6 +85,24 @@
     "guestbook": "Assine meu guestbook!!!",
     "location": "Recife, Pernambuco, Brasil"
   },
+  "era2006": {
+    "site_name": "daniel.tavares '06",
+    "beta_badge": "2.0 BETA",
+    "search_placeholder": "buscar no blog...",
+    "rss_feed": "+ RSS feed",
+    "subscribe_title": "Assinar",
+    "subscribe_rss": "Assinar via RSS",
+    "email_placeholder": "seu@email.com",
+    "subscribe_go": "ok",
+    "tag_cloud": "Nuvem de Tags",
+    "from_projects": "Meus Projetos",
+    "certified": "Certified Web 2.0",
+    "badge_xhtml": "W3C XHTML 1.0",
+    "badge_css": "W3C CSS",
+    "badge_rss": "RSS 2.0",
+    "badge_ready": "WEB 2.0 READY",
+    "location": "Recife, Pernambuco, Brasil"
+  },
   "placeholder": {
     "1996": {
       "title": "EM CONSTRUÇÃO",

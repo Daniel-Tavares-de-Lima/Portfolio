@@ -1,0 +1,129 @@
+---
+import { getCollection } from 'astro:content';
+import profile from '../../../data/profile.json';
+import experience from '../../../data/experience.json';
+import education from '../../../data/education.json';
+import skills from '../../../data/skills.json';
+import aiTools from '../../../data/ai-tools.json';
+import satre from '../../../data/satre.json';
+import { useTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const categoryLabels = {
+  professional: t.projects.category_professional,
+  academic: t.projects.category_academic,
+  personal: t.projects.category_personal,
+};
+---
+<main class="web-main">
+  <section class="web-section" id="about">
+    <h2>{t.nav.about}</h2>
+    <div class="web-about">
+      <img src={profile.avatar} alt={profile.name} class="web-avatar" width="96" height="96" loading="eager" />
+      <div>
+        <h3>{profile.name}</h3>
+        <p class="role">{profile.title[locale]}</p>
+        <p class="bio">{profile.bio[locale]}</p>
+        <p class="location">📍 {t.era2006.location}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="web-section" id="experience">
+    <h2>{t.nav.experience}</h2>
+    {experience.map((job) => (
+      <div class="web-entry">
+        <h3>{job.company}</h3>
+        <p class="role">{job.role[locale]}</p>
+        <p class="meta">{job.period[locale]} · {job.location}</p>
+        <ul>
+          {job.highlights[locale].slice(0, 3).map((h) => <li>{h}</li>)}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  <section class="web-section" id="education">
+    <h2>{t.nav.education}</h2>
+    {education.map((edu) => (
+      <div class="web-entry">
+        <h3>{edu.institution}</h3>
+        <p class="role">{edu.degree[locale]}</p>
+        <p class="meta">{edu.period[locale]} · {edu.status[locale]}</p>
+      </div>
+    ))}
+  </section>
+
+  <section class="web-section" id="satre">
+    <h2>
+      {t.nav.satre}
+      <span class="web-status-badge">{satre.status[locale]}</span>
+    </h2>
+    <p class="role">{satre.fullName[locale]}</p>
+    <p class="bio">{satre.tagline[locale]}</p>
+    <ul>
+      {satre.description[locale].map((line) => <li>{line}</li>)}
+    </ul>
+    {satre.github && (
+      <p><a href={satre.github} target="_blank" rel="noopener">GitHub →</a></p>
+    )}
+  </section>
+
+  <section class="web-section" id="projects">
+    <h2>{t.nav.projects}</h2>
+    {projects.map((project) => (
+      <article class="web-project">
+        <h3>{project.data.title[locale]}</h3>
+        <p>{project.data.description[locale]}</p>
+        <p><strong>{categoryLabels[project.data.category]}</strong> · {project.data.stack.join(', ')}</p>
+        {project.data.github && (
+          <a href={project.data.github} target="_blank" rel="noopener">{t.projects.view_github} →</a>
+        )}
+      </article>
+    ))}
+  </section>
+
+  <section class="web-section" id="skills">
+    <h2>{t.nav.skills}</h2>
+    <p><strong>{t.skills.languages}</strong></p>
+    <div class="web-skills">
+      {skills.languages.map((s) => <span class="web-skill">{s}</span>)}
+    </div>
+    <p><strong>{t.skills.frameworks}</strong></p>
+    <div class="web-skills">
+      {skills.frameworks.map((s) => <span class="web-skill">{s}</span>)}
+    </div>
+    <p><strong>{t.skills.concepts}</strong></p>
+    <div class="web-skills">
+      {skills.concepts[locale].map((s) => <span class="web-skill">{s}</span>)}
+    </div>
+  </section>
+
+  <section class="web-section" id="ai">
+    <h2>{t.nav.ai}</h2>
+    <div class="web-skills">
+      {aiTools.tools.map((tool) => <span class="web-skill">{tool}</span>)}
+    </div>
+    <ul>
+      {aiTools.useCases[locale].map((uc) => <li>{uc}</li>)}
+    </ul>
+  </section>
+
+  <section class="web-section web-contact" id="contact">
+    <h2>{t.contact.title}</h2>
+    <a href={profile.links.email}>{profile.links.email.replace('mailto:', '')}</a>
+    <a href={profile.links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+    <a href={profile.links.github} target="_blank" rel="noopener">GitHub</a>
+    <a href={profile.cv} download>{t.contact.download_cv}</a>
+  </section>
+</main>

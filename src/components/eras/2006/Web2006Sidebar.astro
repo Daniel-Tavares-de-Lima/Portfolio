@@ -1,0 +1,85 @@
+---
+import skills from '../../../data/skills.json';
+import satre from '../../../data/satre.json';
+import profile from '../../../data/profile.json';
+import { useTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const tagWords = [
+  ...skills.languages.slice(0, 3),
+  ...skills.frameworks.slice(0, 5),
+  'web2.0',
+  'design',
+  'typescript',
+  'nodejs',
+  'portfolio',
+  'ux',
+  'api',
+  'react',
+];
+
+const tagSizes = ['tag-xl', 'tag-lg', 'tag-md', 'tag-sm'] as const;
+
+const photos = [
+  profile.avatar,
+  satre.images.intro,
+  satre.images.screens,
+  satre.images.features,
+];
+---
+<aside class="web-sidebar">
+  <div class="web-card">
+    <h3>{t.era2006.subscribe_title}</h3>
+    <button type="button" class="web-btn-rss">{t.era2006.subscribe_rss}</button>
+    <div class="web-email-row">
+      <input type="email" placeholder={t.era2006.email_placeholder} aria-label={t.era2006.email_placeholder} />
+      <button type="button">{t.era2006.subscribe_go}</button>
+    </div>
+  </div>
+
+  <div class="web-card">
+    <h3>{t.era2006.tag_cloud}</h3>
+    <div class="web-tags">
+      {tagWords.map((word, i) => (
+        <a href="#skills" class={tagSizes[i % tagSizes.length]}>{word}</a>
+      ))}
+    </div>
+  </div>
+
+  <div class="web-card">
+    <h3>{t.era2006.from_projects}</h3>
+    <div class="web-photo-grid">
+      {photos.map((src) => (
+        <img src={src} alt="" loading="lazy" width="72" height="72" />
+      ))}
+      <div class="web-photo-placeholder" aria-hidden="true"></div>
+      <div class="web-photo-placeholder" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="web-card">
+    <h3>{t.era2006.certified}</h3>
+    <div class="web-badges">
+      <span class="web-badge web-badge--blue">{t.era2006.badge_xhtml}</span>
+      <span class="web-badge web-badge--green">{t.era2006.badge_css}</span>
+      <span class="web-badge web-badge--orange">{t.era2006.badge_rss}</span>
+      <span class="web-badge web-badge--purple">{t.era2006.badge_ready}</span>
+    </div>
+  </div>
+</aside>
+
+<script>
+  document.querySelector('.web-btn-rss')?.addEventListener('click', () => {
+    alert('RSS 2.0 — Web 2.0 feed coming soon! 😉');
+  });
+  document.querySelector('.web-email-row button')?.addEventListener('click', () => {
+    const input = document.querySelector('.web-email-row input') as HTMLInputElement;
+    if (input?.value) alert(`Subscribed: ${input.value} (not really — it's 2006 nostalgia)`);
+  });
+</script>

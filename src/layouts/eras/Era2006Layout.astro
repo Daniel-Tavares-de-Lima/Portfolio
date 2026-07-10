@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../BaseLayout.astro';
+import Web2006Header from '../../components/eras/2006/Web2006Header.astro';
+import Web2006Nav from '../../components/eras/2006/Web2006Nav.astro';
+import Web2006Main from '../../components/eras/2006/Web2006Main.astro';
+import Web2006Sidebar from '../../components/eras/2006/Web2006Sidebar.astro';
+import '../../styles/eras/2006.css';
+import type { Locale, EraYear } from '../../config/eras';
+import profile from '../../data/profile.json';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  year: EraYear;
+}
+
+const { title, description, locale, year } = Astro.props;
+---
+<BaseLayout {title} {description} {locale} year={year}>
+  <slot name="timeline" />
+  <div class="era-2006">
+    <div class="web-wrap">
+      <Web2006Header locale={locale} year={year} />
+      <Web2006Nav locale={locale} />
+      <div class="web-layout">
+        <Web2006Main locale={locale} />
+        <Web2006Sidebar locale={locale} />
+      </div>
+      <footer class="web-footer">
+        © 2006 {profile.name} · Web 2.0 Edition · Powered by Astro (the future!)
+      </footer>
+    </div>
+  </div>
+</BaseLayout>

@@ -10,7 +10,7 @@ export const ERAS = {
     seoTitle: { pt: 'GeoCities Edition', en: 'GeoCities Edition' },
   },
   '2006': {
-    status: 'placeholder',
+    status: 'ready',
     label: '2006',
     seoTitle: { pt: 'Web 2.0 Edition', en: 'Web 2.0 Edition' },
   },

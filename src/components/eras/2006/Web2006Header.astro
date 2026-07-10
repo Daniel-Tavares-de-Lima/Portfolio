@@ -1,0 +1,24 @@
+---
+import { useTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+  locale: Locale;
+  year: string;
+}
+
+const { locale, year } = Astro.props;
+const t = useTranslations(locale);
+const other = locale === 'pt' ? 'en' : 'pt';
+---
+<header class="web-header">
+  <div class="web-header__brand">
+    <h1>{t.era2006.site_name}</h1>
+    <span class="web-beta">{t.era2006.beta_badge}</span>
+  </div>
+  <div class="web-header__actions">
+    <form class="web-search" role="search" onsubmit="return false;">
+      <input type="search" placeholder={t.era2006.search_placeholder} aria-label={t.era2006.search_placeholder} />
+    </form>
+    <a href={`/${other}/${year}`} class="web-lang">{locale === 'pt' ? 'EN' : 'PT'}</a>
+  </div>
+</header>

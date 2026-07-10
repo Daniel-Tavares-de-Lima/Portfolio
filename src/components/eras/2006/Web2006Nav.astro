@@ -1,0 +1,43 @@
+---
+import { useTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const navItems = [
+  { href: '#about', label: t.nav.about },
+  { href: '#experience', label: t.nav.experience },
+  { href: '#education', label: t.nav.education },
+  { href: '#satre', label: t.nav.satre },
+  { href: '#projects', label: t.nav.projects },
+  { href: '#skills', label: t.nav.skills },
+  { href: '#ai', label: t.nav.ai },
+  { href: '#contact', label: t.nav.contact },
+];
+---
+<nav class="web-nav" aria-label="Main navigation">
+  {navItems.map((item) => (
+    <a href={item.href} class="web-nav-link">{item.label.toLowerCase()}</a>
+  ))}
+  <a href="#about" class="web-rss-link">{t.era2006.rss_feed}</a>
+</nav>
+
+<script>
+  const links = document.querySelectorAll('.web-nav-link');
+  links.forEach((link) => {
+    link.addEventListener('click', () => {
+      links.forEach((l) => l.classList.remove('is-active'));
+      link.classList.add('is-active');
+    });
+  });
+
+  if (window.location.hash) {
+    document.querySelector(`.web-nav-link[href="${window.location.hash}"]`)?.classList.add('is-active');
+  } else {
+    links[0]?.classList.add('is-active');
+  }
+</script>
