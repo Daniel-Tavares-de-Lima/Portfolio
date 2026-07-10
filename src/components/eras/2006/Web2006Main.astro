@@ -29,7 +29,9 @@ const categoryLabels = {
   <section class="web-section" id="about">
     <h2>{t.nav.about}</h2>
     <div class="web-about">
-      <img src={profile.avatar} alt={profile.name} class="web-avatar" width="96" height="96" loading="eager" />
+      <div class="web-avatar-wrap">
+        <img src={profile.avatar} alt={profile.name} class="web-avatar" width="96" height="96" loading="eager" />
+      </div>
       <div>
         <h3>{profile.name}</h3>
         <p class="role">{profile.title[locale]}</p>
@@ -64,7 +66,7 @@ const categoryLabels = {
     ))}
   </section>
 
-  <section class="web-section" id="satre">
+  <section class="web-section web-section--satre" id="satre">
     <h2>
       {t.nav.satre}
       <span class="web-status-badge">{satre.status[locale]}</span>
@@ -93,17 +95,17 @@ const categoryLabels = {
     ))}
   </section>
 
-  <section class="web-section" id="skills">
+  <section class="web-section web-section--skills" id="skills">
     <h2>{t.nav.skills}</h2>
-    <p><strong>{t.skills.languages}</strong></p>
+    <p class="web-skills-label"><strong>{t.skills.languages}</strong></p>
     <div class="web-skills">
       {skills.languages.map((s) => <span class="web-skill">{s}</span>)}
     </div>
-    <p><strong>{t.skills.frameworks}</strong></p>
+    <p class="web-skills-label"><strong>{t.skills.frameworks}</strong></p>
     <div class="web-skills">
       {skills.frameworks.map((s) => <span class="web-skill">{s}</span>)}
     </div>
-    <p><strong>{t.skills.concepts}</strong></p>
+    <p class="web-skills-label"><strong>{t.skills.concepts}</strong></p>
     <div class="web-skills">
       {skills.concepts[locale].map((s) => <span class="web-skill">{s}</span>)}
     </div>

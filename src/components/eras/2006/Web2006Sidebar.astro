@@ -27,10 +27,10 @@ const tagWords = [
 const tagSizes = ['tag-xl', 'tag-lg', 'tag-md', 'tag-sm'] as const;
 
 const photos = [
-  profile.avatar,
-  satre.images.intro,
-  satre.images.screens,
-  satre.images.features,
+  { src: profile.avatar, alt: profile.name },
+  { src: satre.images.intro, alt: 'SATRE' },
+  { src: satre.images.screens, alt: 'SATRE screens' },
+  { src: satre.images.features, alt: 'SATRE features' },
 ];
 ---
 <aside class="web-sidebar">
@@ -55,8 +55,15 @@ const photos = [
   <div class="web-card">
     <h3>{t.era2006.from_projects}</h3>
     <div class="web-photo-grid">
-      {photos.map((src) => (
-        <img src={src} alt="" loading="lazy" width="72" height="72" />
+      {photos.map((photo, i) => (
+        <button
+          type="button"
+          class:list={['web-photo-btn', i === 0 && 'web-photo-btn--avatar']}
+          data-lightbox-src={photo.src}
+          aria-label={`${t.era2006.expand_image}: ${photo.alt}`}
+        >
+          <img src={photo.src} alt={photo.alt} loading="lazy" width="72" height="72" />
+        </button>
       ))}
       <div class="web-photo-placeholder" aria-hidden="true"></div>
       <div class="web-photo-placeholder" aria-hidden="true"></div>
@@ -74,6 +81,14 @@ const photos = [
   </div>
 </aside>
 
+<dialog class="web-lightbox" id="web-lightbox" aria-label={t.era2006.expand_image}>
+  <button type="button" class="web-lightbox__close" id="web-lightbox-close" aria-label={t.era2006.close_lightbox}>✕</button>
+  <button type="button" class="web-lightbox__backdrop" id="web-lightbox-backdrop" aria-label={t.era2006.close_lightbox}></button>
+  <div class="web-lightbox__panel">
+    <img src="" alt="" class="web-lightbox__img" id="web-lightbox-img" />
+  </div>
+</dialog>
+
 <script>
   document.querySelector('.web-btn-rss')?.addEventListener('click', () => {
     alert('RSS 2.0 — Web 2.0 feed coming soon! 😉');
@@ -81,5 +96,37 @@ const photos = [
   document.querySelector('.web-email-row button')?.addEventListener('click', () => {
     const input = document.querySelector('.web-email-row input') as HTMLInputElement;
     if (input?.value) alert(`Subscribed: ${input.value} (not really — it's 2006 nostalgia)`);
+  });
+
+  const dialog = document.getElementById('web-lightbox') as HTMLDialogElement | null;
+  const img = document.getElementById('web-lightbox-img') as HTMLImageElement | null;
+  const closeBtn = document.getElementById('web-lightbox-close');
+  const backdrop = document.getElementById('web-lightbox-backdrop');
+
+  function closeLightbox() {
+    dialog?.close();
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.web-photo-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (!dialog || !img) return;
+      const src = btn.getAttribute('data-lightbox-src');
+      const thumb = btn.querySelector('img');
+      if (!src) return;
+      img.src = src;
+      img.alt = thumb?.getAttribute('alt') || '';
+      dialog.showModal();
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeLightbox);
+  backdrop?.addEventListener('click', closeLightbox);
+  dialog?.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+  dialog?.addEventListener('close', () => {
+    document.body.style.overflow = '';
   });
 </script>

@@ -4,6 +4,13 @@
   font-family: Arial, Helvetica, sans-serif;
   color: #1e293b;
   padding-bottom: 2rem;
+  color-scheme: light only;
+  forced-color-adjust: none;
+}
+
+html:has(.era-2006) body {
+  background: #bfdbfe;
+  color: #1e293b;
 }
 
 .web-wrap {
@@ -143,7 +150,8 @@
 
 .web-sidebar {
   flex: 0 0 240px;
-  min-width: 220px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .web-card {
@@ -153,6 +161,8 @@
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  min-width: 0;
 }
 
 .web-card h3 {
@@ -170,6 +180,13 @@
   padding: 1.25rem;
   margin-bottom: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  color: #1e293b;
+}
+
+.web-section p,
+.web-section li,
+.web-section ul {
+  color: #334155;
 }
 
 .web-section h2 {
@@ -187,13 +204,26 @@
   align-items: flex-start;
 }
 
-.web-avatar {
+.web-avatar-wrap {
   width: 96px;
   height: 96px;
+  flex-shrink: 0;
   border-radius: 8px;
   border: 3px solid #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+.web-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
   object-fit: cover;
+  object-position: center 18%;
+  display: block;
 }
 
 .web-about h3 {
@@ -319,12 +349,18 @@
 }
 
 .web-tags {
-  line-height: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.6rem;
+  line-height: 1.6;
+  max-width: 100%;
 }
 
 .web-tags a {
   text-decoration: none;
-  margin-right: 0.35rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .web-tags .tag-xl { font-size: 1.25rem; color: #1d4ed8; font-weight: 700; }
@@ -336,6 +372,37 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4px;
+}
+
+.web-photo-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  background: #f8fafc;
+  cursor: zoom-in;
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.web-photo-btn:hover,
+.web-photo-btn:focus-visible {
+  border-color: #3b82f6;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.35);
+  outline: none;
+}
+
+.web-photo-btn img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.web-photo-btn--avatar img {
+  object-position: center 18%;
 }
 
 .web-photo-grid img {
@@ -417,6 +484,140 @@
   border-radius: 9999px;
   border: 1px solid #fcd34d;
   margin-left: 0.35rem;
+}
+
+/* SATRE — destaque Web 2.0 com texto claro */
+.web-section--satre {
+  background: linear-gradient(180deg, #1e40af 0%, #1e3a8a 50%, #172554 100%);
+  border-color: #3b82f6;
+  color: #f8fafc;
+}
+
+.web-section--satre h2 {
+  color: #bfdbfe;
+  border-bottom-color: #3b82f6;
+}
+
+.web-section--satre .role {
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.web-section--satre .bio,
+.web-section--satre li,
+.web-section--satre p,
+.web-section--satre ul {
+  color: #f1f5f9;
+}
+
+.web-section--satre a {
+  color: #fde68a;
+  font-weight: 600;
+}
+
+.web-section--satre a:hover {
+  color: #ffffff;
+}
+
+.web-section--satre .web-status-badge {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* Skills — rótulos legíveis */
+.web-section--skills {
+  background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
+  border-color: #93c5fd;
+}
+
+.web-section--skills .web-skills-label {
+  margin-top: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.web-section--skills .web-skills-label:first-of-type {
+  margin-top: 0;
+}
+
+.web-section--skills .web-skills-label strong {
+  color: #1d4ed8;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* Lightbox — Meus Projetos */
+.web-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  overflow: hidden;
+}
+
+.web-lightbox::backdrop {
+  background: rgba(15, 23, 42, 0.88);
+}
+
+.web-lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.web-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: transparent;
+  cursor: zoom-out;
+}
+
+.web-lightbox__panel {
+  position: relative;
+  z-index: 1;
+  max-width: min(92vw, 900px);
+  max-height: 88vh;
+  padding: 1rem;
+}
+
+.web-lightbox__img {
+  display: block;
+  max-width: 100%;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 3px solid #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+.web-lightbox__close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px outset #dfdfdf;
+  border-radius: 4px;
+  background: #c0c0c0;
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.web-lightbox__close:hover {
+  background: #dfdfdf;
 }
 
 @media (max-width: 720px) {

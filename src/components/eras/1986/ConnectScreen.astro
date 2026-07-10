@@ -9,40 +9,9 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 <div class="connect-screen" id="connect-screen">
-  <h1>{t.era1986.bbs_title}</h1>
-  <p class="specs">{t.era1986.specs}</p>
+  <h1 class="bbs-type-target" data-text={t.era1986.bbs_title}></h1>
+  <p class="specs bbs-type-target" data-text={t.era1986.specs}></p>
   <p class="dialing-msg" id="dialing-msg" aria-live="polite"></p>
-  <button type="button" class="connect-btn" id="connect-btn">► {t.era1986.connect}</button>
-  <p class="connect-hint">{t.era1986.press_to_dial}</p>
+  <button type="button" class="connect-btn" id="connect-btn" hidden>► {t.era1986.connect}</button>
+  <p class="connect-hint bbs-type-target" data-text={t.era1986.press_to_dial}></p>
 </div>
-
-<script is:inline define:vars={{ dialingText: t.era1986.dialing }}>
-  const connectBtn = document.getElementById('connect-btn');
-  const connectScreen = document.getElementById('connect-screen');
-  const terminalContent = document.getElementById('bbs-content');
-  const dialingMsg = document.getElementById('dialing-msg');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function showContent() {
-    connectScreen?.classList.add('is-hidden');
-    terminalContent?.classList.add('is-visible');
-  }
-
-  connectBtn?.addEventListener('click', () => {
-    if (reducedMotion) {
-      showContent();
-      return;
-    }
-
-    connectBtn.disabled = true;
-    let i = 0;
-    const interval = setInterval(() => {
-      if (dialingMsg) dialingMsg.textContent = dialingText.slice(0, i);
-      i++;
-      if (i > dialingText.length) {
-        clearInterval(interval);
-        setTimeout(showContent, 400);
-      }
-    }, 80);
-  });
-</script>

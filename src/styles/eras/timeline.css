@@ -101,3 +101,43 @@
     font-size: 0.75rem;
   }
 }
+
+/*
+ * Selected tab — higher specificity than per-era .era-timeline__tab { color }
+ * so the active year stays visible (not white-on-white).
+ */
+.era-timeline .era-timeline__tab[aria-selected='true'] {
+  background: #ffffff;
+  color: #111111;
+}
+
+.timeline--1986 .era-timeline__tab[aria-selected='true'] {
+  background: #00ff41;
+  color: #000000;
+}
+
+.timeline--1996 .era-timeline__tab[aria-selected='true'] {
+  background: #ff00ff;
+  color: #ffff00;
+}
+
+.timeline--2006 .era-timeline__tab[aria-selected='true'] {
+  background: #ffffff;
+  color: #1d4ed8;
+}
+
+.timeline--2016 .era-timeline__tab[aria-selected='true'] {
+  background: #ffffff;
+  color: #111111;
+}
+
+.timeline--2026 .era-timeline__tab[aria-selected='true'] {
+  background: rgba(255, 255, 255, 0.95);
+  color: #4c1d95;
+}
+
+.timeline--2036 .era-timeline__tab[aria-selected='true'],
+.timeline--2046 .era-timeline__tab[aria-selected='true'] {
+  background: #67e8f9;
+  color: #0a0a12;
+}

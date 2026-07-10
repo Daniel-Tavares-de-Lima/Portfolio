@@ -1,33 +1,69 @@
 .era-1986 {
-  background: #000;
+  background: #020202;
   color: #00ff41;
   font-family: 'VT323', monospace;
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden;
 }
 
-.era-1986::after {
-  content: '';
+/* Phosphor glow on all terminal text */
+.era-1986,
+.era-1986 .connect-screen,
+.era-1986 .terminal-content {
+  text-shadow:
+    0 0 4px rgba(0, 255, 65, 0.85),
+    0 0 12px rgba(0, 255, 65, 0.35);
+}
+
+/* CRT overlay — scanlines + vignette (always on top, no pointer capture) */
+.crt-overlay {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 100;
+  z-index: 9998;
+}
+
+.crt-scanlines {
+  position: absolute;
+  inset: 0;
   background: repeating-linear-gradient(
-    0deg,
-    transparent,
+    to bottom,
+    transparent 0px,
     transparent 2px,
-    rgba(0, 0, 0, 0.12) 2px,
-    rgba(0, 0, 0, 0.12) 4px
+    rgba(0, 0, 0, 0.28) 2px,
+    rgba(0, 0, 0, 0.28) 4px
+  );
+  animation: crt-flicker 8s steps(1) infinite;
+}
+
+.crt-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.45) 100%
   );
 }
 
+@keyframes crt-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.97; }
+  51% { opacity: 1; }
+  89% { opacity: 0.98; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .era-1986::after {
-    display: none;
+  .crt-scanlines {
+    animation: none;
+    opacity: 0.85;
   }
 }
 
 .connect-screen {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,7 +71,6 @@
   min-height: calc(100vh - 4rem);
   text-align: center;
   padding: 2rem;
-  text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
 }
 
 .connect-screen.is-hidden {
@@ -46,11 +81,13 @@
   font-size: clamp(1.5rem, 5vw, 2.5rem);
   letter-spacing: 0.1em;
   margin-bottom: 0.5rem;
+  min-height: 1.4em;
 }
 
 .connect-screen .specs {
-  opacity: 0.85;
+  opacity: 0.9;
   margin-bottom: 2rem;
+  min-height: 1.2em;
 }
 
 .connect-btn {
@@ -62,25 +99,41 @@
   cursor: pointer;
   font-family: inherit;
   box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+  position: relative;
+  z-index: 2;
+  text-shadow: none;
 }
 
-.connect-btn:hover {
-  box-shadow: 0 0 30px rgba(0, 255, 65, 0.8);
+.connect-btn:hover:not(:disabled) {
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.9);
+}
+
+.connect-btn:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.connect-btn[hidden] {
+  display: none;
 }
 
 .connect-hint {
   margin-top: 1rem;
   font-size: 0.9rem;
   opacity: 0.7;
+  min-height: 1.2em;
 }
 
 .dialing-msg {
   min-height: 1.5rem;
   margin-bottom: 1rem;
+  color: #00ff41;
 }
 
 .terminal-content {
   display: none;
+  position: relative;
+  z-index: 1;
   padding: 2rem 1.5rem 4rem;
   max-width: 800px;
   margin: 0 auto;
@@ -94,6 +147,7 @@
   margin-bottom: 2.5rem;
   border: 1px solid #00ff41;
   padding: 1rem;
+  box-shadow: inset 0 0 24px rgba(0, 255, 65, 0.04);
 }
 
 .bbs-section h2 {
@@ -110,20 +164,42 @@
   word-break: break-word;
   line-height: 1.5;
   margin: 0;
-}
-
-.bbs-list {
-  list-style: decimal;
-  padding-left: 1.5rem;
-}
-
-.bbs-list li {
-  margin-bottom: 0.75rem;
+  min-height: 1.2em;
 }
 
 .bbs-file {
   font-family: inherit;
   color: #00ff41;
+}
+
+.bbs-skip-btn {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 9999;
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  color: #00ff41;
+  background: rgba(0, 20, 0, 0.85);
+  border: 1px solid rgba(0, 255, 65, 0.45);
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+  text-shadow:
+    0 0 4px rgba(0, 255, 65, 0.85),
+    0 0 12px rgba(0, 255, 65, 0.35);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.bbs-skip-btn:hover,
+.bbs-skip-btn:focus-visible {
+  background: rgba(0, 40, 0, 0.95);
+  border-color: #00ff41;
+  outline: none;
+}
+
+.bbs-skip-key {
+  opacity: 0.65;
+  font-size: 0.95em;
 }
 
 .no-js .connect-screen {
@@ -137,5 +213,11 @@
 @media (prefers-reduced-motion: reduce) {
   .connect-btn {
     box-shadow: none;
+  }
+
+  .era-1986,
+  .era-1986 .connect-screen,
+  .era-1986 .terminal-content {
+    text-shadow: none;
   }
 }

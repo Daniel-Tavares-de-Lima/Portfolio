@@ -18,6 +18,7 @@ interface Props {
 const { title, description, locale, year } = Astro.props;
 ---
 <BaseLayout {title} {description} {locale} year={year}>
+  <meta slot="head" name="color-scheme" content="light only" />
   <slot name="timeline" />
   <div class="era-2006">
     <div class="web-wrap">

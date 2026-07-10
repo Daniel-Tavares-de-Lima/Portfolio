@@ -26,11 +26,22 @@ const categoryLabels = {
 };
 ---
 <main class="geo-main">
-  <section class="geo-panel" id="about">
+  <section class="geo-panel section-plain" id="about">
     <h2>{t.nav.about}</h2>
     <div class="geo-about-row">
-      <div class="geo-avatar-wrap">
-        <img src={profile.avatar} alt={profile.name} class="geo-avatar" width="100" height="100" loading="lazy" />
+      <div class="geo-avatar-frame">
+        <div class="geo-avatar-wrap">
+          <div class="geo-avatar-reveal" id="geo-avatar-reveal">
+            <img
+              src={profile.avatar}
+              alt={profile.name}
+              class="geo-avatar"
+              width="100"
+              height="100"
+              decoding="async"
+            />
+          </div>
+        </div>
       </div>
       <div>
         <p class="geo-name">{profile.name}</p>
@@ -41,7 +52,7 @@ const categoryLabels = {
     </div>
   </section>
 
-  <section class="geo-panel" id="experience">
+  <section class="geo-panel section-plain" id="experience">
     <h2>{t.nav.experience}</h2>
     {experience.map((job) => (
       <div class="geo-job">
@@ -55,7 +66,7 @@ const categoryLabels = {
     ))}
   </section>
 
-  <section class="geo-panel" id="education">
+  <section class="geo-panel section-plain" id="education">
     <h2>{t.nav.education}</h2>
     {education.map((edu) => (
       <div class="geo-job">
@@ -66,19 +77,21 @@ const categoryLabels = {
     ))}
   </section>
 
-  <section class="geo-panel" id="satre">
+  <section class="geo-panel section-plain geo-satre-panel" id="satre">
     <h2>{t.nav.satre} <span class="geo-satre-badge">{satre.status[locale]}</span></h2>
-    <p class="geo-role">{satre.fullName[locale]}</p>
-    <p class="geo-bio">{satre.tagline[locale]}</p>
-    <ul>
-      {satre.description[locale].map((line) => <li>{line}</li>)}
-    </ul>
-    {satre.github && (
-      <p><a href={satre.github} target="_blank" rel="noopener">GitHub SATRE →</a></p>
-    )}
+    <div class="geo-satre-body">
+      <p class="geo-role">{satre.fullName[locale]}</p>
+      <p class="geo-bio">{satre.tagline[locale]}</p>
+      <ul>
+        {satre.description[locale].map((line) => <li>{line}</li>)}
+      </ul>
+      {satre.github && (
+        <p><a href={satre.github} target="_blank" rel="noopener">GitHub SATRE →</a></p>
+      )}
+    </div>
   </section>
 
-  <section class="geo-panel" id="projects">
+  <section class="geo-panel section-plain" id="projects">
     <h2>{t.nav.projects}</h2>
     {projects.map((project) => (
       <article class="geo-project">
@@ -92,7 +105,7 @@ const categoryLabels = {
     ))}
   </section>
 
-  <section class="geo-panel" id="skills">
+  <section class="geo-panel section-plain" id="skills">
     <h2>{t.nav.skills}</h2>
     <p><strong>{t.skills.languages}:</strong></p>
     <div class="geo-skills">
@@ -108,7 +121,7 @@ const categoryLabels = {
     </div>
   </section>
 
-  <section class="geo-panel" id="ai">
+  <section class="geo-panel section-plain" id="ai">
     <h2>{t.nav.ai}</h2>
     <div class="geo-skills">
       {aiTools.tools.map((tool) => <span>{tool}</span>)}
@@ -118,7 +131,7 @@ const categoryLabels = {
     </ul>
   </section>
 
-  <section class="geo-panel geo-contact" id="contact">
+  <section class="geo-panel section-plain geo-contact" id="contact">
     <h2>{t.contact.title}</h2>
     <a href={profile.links.email}>{profile.links.email.replace('mailto:', '')}</a>
     <a href={profile.links.linkedin} target="_blank" rel="noopener">LinkedIn</a>

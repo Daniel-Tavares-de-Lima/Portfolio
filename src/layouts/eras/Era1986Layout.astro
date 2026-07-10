@@ -4,6 +4,7 @@ import ConnectScreen from '../../components/eras/1986/ConnectScreen.astro';
 import BbsPortfolio from '../../components/eras/1986/BbsPortfolio.astro';
 import '../../styles/eras/1986.css';
 import type { Locale, EraYear } from '../../config/eras';
+import { useTranslations } from '../../i18n';
 
 interface Props {
   title: string;
@@ -13,21 +14,215 @@ interface Props {
 }
 
 const { title, description, locale, year } = Astro.props;
+const t = useTranslations(locale);
 ---
 <BaseLayout {title} {description} {locale} year={year}>
   <link slot="head" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
   <slot name="timeline" />
   <div class="era-1986">
+    <div class="crt-overlay" aria-hidden="true">
+      <div class="crt-scanlines"></div>
+      <div class="crt-vignette"></div>
+    </div>
     <ConnectScreen locale={locale} />
+    <button type="button" class="bbs-skip-btn" id="bbs-skip-btn" hidden aria-label={t.era1986.skip}>
+      ►► {t.era1986.skip} <span class="bbs-skip-key">({t.era1986.skip_hint})</span>
+    </button>
     <div class="terminal-content" id="bbs-content">
       <BbsPortfolio locale={locale} />
     </div>
   </div>
 </BaseLayout>
 
+<script is:inline define:vars={{ dialingText: t.era1986.dialing }}>
+  (function initBbs1986() {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const CHAR_DELAY = 45;
+    const SECTION_GAP = 280;
+
+    let skipRequested = false;
+    let activeTimer = null;
+
+    function sleep(ms) {
+      return new Promise((resolve) => {
+        if (skipRequested) {
+          resolve();
+          return;
+        }
+        activeTimer = setTimeout(() => {
+          activeTimer = null;
+          resolve();
+        }, ms);
+      });
+    }
+
+    function clearActiveTimer() {
+      if (activeTimer) {
+        clearTimeout(activeTimer);
+        activeTimer = null;
+      }
+    }
+
+    function typeInto(el, text, delay = CHAR_DELAY) {
+      if (!el || !text) return Promise.resolve();
+      if (skipRequested || reducedMotion) {
+        el.textContent = text;
+        return Promise.resolve();
+      }
+      return new Promise((resolve) => {
+        let i = 0;
+        const tick = () => {
+          if (skipRequested) {
+            el.textContent = text;
+            resolve();
+            return;
+          }
+          const done = i >= text.length;
+          el.textContent = done ? text : text.slice(0, i) + '_';
+          i++;
+          if (done) {
+            resolve();
+          } else {
+            activeTimer = setTimeout(tick, delay);
+          }
+        };
+        tick();
+      });
+    }
+
+    function showSkipButton() {
+      const btn = document.getElementById('bbs-skip-btn');
+      if (btn && !skipRequested) btn.hidden = false;
+    }
+
+    function hideSkipButton() {
+      const btn = document.getElementById('bbs-skip-btn');
+      if (btn) btn.hidden = true;
+    }
+
+    function fillConnectScreen() {
+      document.querySelectorAll('#connect-screen .bbs-type-target').forEach((el) => {
+        el.textContent = el.getAttribute('data-text') || '';
+      });
+      const dialingMsg = document.getElementById('dialing-msg');
+      if (dialingMsg) dialingMsg.textContent = '';
+      const connectBtn = document.getElementById('connect-btn');
+      if (connectBtn) {
+        connectBtn.hidden = false;
+        connectBtn.disabled = false;
+      }
+    }
+
+    function fillAllContent() {
+      document.querySelectorAll('#bbs-content .typewriter').forEach((el) => {
+        el.textContent = el.getAttribute('data-text') || '';
+        el.setAttribute('data-typed', 'true');
+      });
+    }
+
+    function revealContentPanel() {
+      document.getElementById('connect-screen')?.classList.add('is-hidden');
+      document.getElementById('bbs-content')?.classList.add('is-visible');
+    }
+
+    function skipAll() {
+      if (skipRequested) return;
+      skipRequested = true;
+      clearActiveTimer();
+      fillConnectScreen();
+      revealContentPanel();
+      fillAllContent();
+      hideSkipButton();
+    }
+
+    async function typeConnectScreen() {
+      showSkipButton();
+      const targets = document.querySelectorAll('#connect-screen .bbs-type-target');
+      for (const el of targets) {
+        if (skipRequested) return;
+        const text = el.getAttribute('data-text') || '';
+        el.textContent = '';
+        await typeInto(el, text);
+        await sleep(120);
+      }
+      if (skipRequested) return;
+      const btn = document.getElementById('connect-btn');
+      if (btn) btn.hidden = false;
+    }
+
+    async function typeContentSections() {
+      const blocks = document.querySelectorAll('#bbs-content .typewriter[data-typed="false"]');
+      for (const block of blocks) {
+        if (skipRequested) return;
+        const text = block.getAttribute('data-text') || '';
+        block.setAttribute('data-typed', 'true');
+        block.textContent = '';
+        await typeInto(block, text);
+        await sleep(SECTION_GAP);
+      }
+      if (!skipRequested) hideSkipButton();
+    }
+
+    function showContent() {
+      revealContentPanel();
+      typeContentSections();
+    }
+
+    function bindConnect() {
+      const connectBtn = document.getElementById('connect-btn');
+      const dialingMsg = document.getElementById('dialing-msg');
+
+      connectBtn?.addEventListener('click', async () => {
+        if (connectBtn.disabled || skipRequested) return;
+        connectBtn.disabled = true;
+        showSkipButton();
+
+        if (reducedMotion) {
+          showContent();
+          hideSkipButton();
+          return;
+        }
+
+        await typeInto(dialingMsg, dialingText, 55);
+        await sleep(500);
+        if (skipRequested) return;
+        showContent();
+      });
+    }
+
+    function bindSkip() {
+      const skipBtn = document.getElementById('bbs-skip-btn');
+      skipBtn?.addEventListener('click', skipAll);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') skipAll();
+      });
+    }
+
+    function boot() {
+      bindConnect();
+      bindSkip();
+      if (reducedMotion) {
+        fillConnectScreen();
+        revealContentPanel();
+        fillAllContent();
+        return;
+      }
+      typeConnectScreen();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', boot);
+    } else {
+      boot();
+    }
+  })();
+</script>
+
 <noscript>
   <style>
     .connect-screen { display: none !important; }
     .terminal-content { display: block !important; }
+    .connect-btn { display: none !important; }
+    .bbs-skip-btn { display: none !important; }
   </style>
 </noscript>

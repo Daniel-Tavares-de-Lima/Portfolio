@@ -56,7 +56,9 @@
     "bbs_title": "DANIEL'S BBS",
     "specs": "1200 BAUD - 8-N-1 - ANSI",
     "file_listing": "FILE LISTING",
-    "dial": "DIAL"
+    "dial": "DIAL",
+    "skip": "Pular animação",
+    "skip_hint": "ESC"
   },
   "era2026": {
     "brand": "DanielTavaresOS",
@@ -101,7 +103,9 @@
     "badge_css": "W3C CSS",
     "badge_rss": "RSS 2.0",
     "badge_ready": "WEB 2.0 READY",
-    "location": "Recife, Pernambuco, Brasil"
+    "location": "Recife, Pernambuco, Brasil",
+    "expand_image": "Ampliar imagem",
+    "close_lightbox": "Fechar"
   },
   "era2036": {
     "brand": "DanielLink™ v12",

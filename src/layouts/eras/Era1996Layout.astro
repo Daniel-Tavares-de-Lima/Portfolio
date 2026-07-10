@@ -21,6 +21,7 @@ const { title, description, locale, year } = Astro.props;
 const t = useTranslations(locale);
 ---
 <BaseLayout {title} {description} {locale} year={year}>
+  <meta slot="head" name="color-scheme" content="light only" />
   <slot name="timeline" />
   <div class="era-1996">
     <GeoLoader locale={locale} />
@@ -36,3 +37,39 @@ const t = useTranslations(locale);
     </footer>
   </div>
 </BaseLayout>
+
+<script is:inline>
+  (function initGeoAvatar1996() {
+    const reveal = document.getElementById('geo-avatar-reveal');
+    const img = reveal?.querySelector('.geo-avatar');
+    const loader = document.getElementById('geo-loader');
+    if (!reveal || !img) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+
+    const startReveal = () => {
+      if (reveal.classList.contains('is-loading')) return;
+      reveal.classList.add('is-loading');
+    };
+
+    const waitForLoader = (cb) => {
+      if (!loader || loader.classList.contains('is-hidden')) {
+        cb();
+        return;
+      }
+      const observer = new MutationObserver(() => {
+        if (loader.classList.contains('is-hidden')) {
+          observer.disconnect();
+          cb();
+        }
+      });
+      observer.observe(loader, { attributes: true, attributeFilter: ['class'] });
+    };
+
+    const boot = () => waitForLoader(startReveal);
+
+    if (img.complete) boot();
+    else img.addEventListener('load', boot, { once: true });
+  })();
+</script>
