@@ -19,7 +19,7 @@ const t = useTranslations(locale);
 <BaseLayout {title} {description} {locale} year={year}>
   <slot name="timeline" />
   <div class="era-2046">
-    <ConsciousnessIntro locale={locale} />
+    <ConsciousnessIntro locale={locale} year={year} />
     <ConsciousnessContent locale={locale} year={year} />
     <p class="consciousness-disclaimer">{t.era2046.disclaimer}</p>
     <footer class="consciousness-footer">{t.era2046.footer}</footer>

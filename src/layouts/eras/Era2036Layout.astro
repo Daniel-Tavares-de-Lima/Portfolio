@@ -19,7 +19,7 @@ const t = useTranslations(locale);
 <BaseLayout {title} {description} {locale} year={year}>
   <slot name="timeline" />
   <div class="era-2036">
-    <NeuralPairing locale={locale} />
+    <NeuralPairing locale={locale} year={year} />
     <NeuralContent locale={locale} year={year} />
     <footer class="neural-footer">{t.era2036.footer}</footer>
   </div>
