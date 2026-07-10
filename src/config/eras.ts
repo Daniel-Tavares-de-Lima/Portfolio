@@ -25,7 +25,7 @@ export const ERAS = {
     seoTitle: { pt: 'Agent Edition', en: 'Agent Edition' },
   },
   '2036': {
-    status: 'placeholder',
+    status: 'ready',
     label: '2036',
     seoTitle: { pt: 'Neural Edition', en: 'Neural Edition' },
   },

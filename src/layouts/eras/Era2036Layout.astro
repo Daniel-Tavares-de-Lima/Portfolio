@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../BaseLayout.astro';
+import NeuralPairing from '../../components/eras/2036/NeuralPairing.astro';
+import NeuralContent from '../../components/eras/2036/NeuralContent.astro';
+import '../../styles/eras/2036.css';
+import type { Locale, EraYear } from '../../config/eras';
+import { useTranslations } from '../../i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  year: EraYear;
+}
+
+const { title, description, locale, year } = Astro.props;
+const t = useTranslations(locale);
+---
+<BaseLayout {title} {description} {locale} year={year}>
+  <slot name="timeline" />
+  <div class="era-2036">
+    <NeuralPairing locale={locale} />
+    <NeuralContent locale={locale} year={year} />
+    <footer class="neural-footer">{t.era2036.footer}</footer>
+  </div>
+</BaseLayout>
+
+<noscript>
+  <style>
+    .neural-pairing { display: none !important; }
+    .neural-content { display: block !important; }
+  </style>
+</noscript>

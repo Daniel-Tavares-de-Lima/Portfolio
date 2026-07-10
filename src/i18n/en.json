@@ -103,6 +103,19 @@
     "badge_ready": "WEB 2.0 READY",
     "location": "Recife, Pernambuco, Brazil"
   },
+  "era2036": {
+    "brand": "DanielLink™ v12",
+    "step": "STEP 1 OF 1",
+    "title": "Connect your DanielLink™",
+    "title_highlight": "DanielLink",
+    "subtitle": "Hold your DanielLink device against your ear to pair with DanielTavaresOS. Stay still while we establish the link.",
+    "start": "Start",
+    "linking": "Establishing neural link...",
+    "linked": "Link established",
+    "nav_label": "Neural modules",
+    "footer": "© 2036 DANIEL TAVARES",
+    "location": "Recife, Pernambuco, Brazil"
+  },
   "placeholder": {
     "1996": {
       "title": "UNDER CONSTRUCTION",

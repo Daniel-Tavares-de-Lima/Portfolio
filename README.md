@@ -13,7 +13,7 @@ Default home: `/pt/2016`. Use the timeline bar to switch eras.
 | 2006 Web 2.0 | `/pt/2006` | Ready |
 | 2016 Flat | `/pt/2016` | Ready (default) |
 | 2026 Agent | `/pt/2026` | Ready |
-| 2036 Neural | `/pt/2036` | Coming soon |
+| 2036 Neural | `/pt/2036` | Ready |
 | 2046 Consciousness | `/pt/2046` | Coming soon |
 
 English routes: replace `/pt` with `/en`.

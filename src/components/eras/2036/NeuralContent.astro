@@ -1,0 +1,164 @@
+---
+import { getCollection } from 'astro:content';
+import profile from '../../../data/profile.json';
+import experience from '../../../data/experience.json';
+import education from '../../../data/education.json';
+import skills from '../../../data/skills.json';
+import aiTools from '../../../data/ai-tools.json';
+import satre from '../../../data/satre.json';
+import { useTranslations, type Locale } from '../../../i18n';
+
+interface Props {
+  locale: Locale;
+  year: string;
+}
+
+const { locale, year } = Astro.props;
+const t = useTranslations(locale);
+const other = locale === 'pt' ? 'en' : 'pt';
+
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const categoryLabels = {
+  professional: t.projects.category_professional,
+  academic: t.projects.category_academic,
+  personal: t.projects.category_personal,
+};
+
+const navItems = [
+  { href: '#about', label: t.nav.about },
+  { href: '#experience', label: t.nav.experience },
+  { href: '#education', label: t.nav.education },
+  { href: '#satre', label: t.nav.satre },
+  { href: '#projects', label: t.nav.projects },
+  { href: '#skills', label: t.nav.skills },
+  { href: '#ai', label: t.nav.ai },
+  { href: '#contact', label: t.nav.contact },
+];
+---
+<div class="neural-content" id="neural-content">
+  <div class="neural-content-header">
+    <div class="neural-status">
+      <span class="neural-status__dot" aria-hidden="true"></span>
+      <span>{t.era2036.linked} · DanielTavaresOS</span>
+    </div>
+    <nav class="neural-nav" aria-label={t.era2036.nav_label}>
+      {navItems.map((item) => (
+        <a href={item.href} class="neural-nav-link">{item.label}</a>
+      ))}
+    </nav>
+    <a href={`/${other}/${year}`} class="neural-lang">{locale === 'pt' ? 'EN' : 'PT'}</a>
+  </div>
+
+  <section class="neural-module" id="about">
+    <h2>{t.nav.about}</h2>
+    <div class="neural-about">
+      <img src={profile.avatar} alt={profile.name} class="neural-avatar" width="88" height="88" loading="lazy" />
+      <div>
+        <p class="neural-name">{profile.name}</p>
+        <p class="neural-role">{profile.title[locale]}</p>
+        <p class="neural-bio">{profile.bio[locale]}</p>
+        <p class="neural-location">📍 {t.era2036.location}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="neural-module" id="experience">
+    <h2>{t.nav.experience}</h2>
+    {experience.map((job) => (
+      <div class="neural-entry">
+        <h3>{job.company}</h3>
+        <p class="neural-role">{job.role[locale]}</p>
+        <p class="meta">{job.period[locale]} · {job.location}</p>
+        <ul>
+          {job.highlights[locale].slice(0, 3).map((h) => <li>{h}</li>)}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  <section class="neural-module" id="education">
+    <h2>{t.nav.education}</h2>
+    {education.map((edu) => (
+      <div class="neural-entry">
+        <h3>{edu.institution}</h3>
+        <p class="neural-role">{edu.degree[locale]}</p>
+        <p class="meta">{edu.period[locale]} · {edu.status[locale]}</p>
+      </div>
+    ))}
+  </section>
+
+  <section class="neural-module" id="satre">
+    <h2>
+      {t.nav.satre}
+      <span class="neural-badge">{satre.status[locale]}</span>
+    </h2>
+    <p class="neural-role">{satre.fullName[locale]}</p>
+    <p class="neural-bio">{satre.tagline[locale]}</p>
+    <ul>
+      {satre.description[locale].map((line) => <li>{line}</li>)}
+    </ul>
+    {satre.github && (
+      <p><a href={satre.github} target="_blank" rel="noopener">GitHub →</a></p>
+    )}
+  </section>
+
+  <section class="neural-module" id="projects">
+    <h2>{t.nav.projects}</h2>
+    {projects.map((project) => (
+      <article class="neural-project">
+        <h3>{project.data.title[locale]}</h3>
+        <p>{project.data.description[locale]}</p>
+        <p><strong>{categoryLabels[project.data.category]}</strong> · {project.data.stack.join(', ')}</p>
+        {project.data.github && (
+          <a href={project.data.github} target="_blank" rel="noopener">{t.projects.view_github} →</a>
+        )}
+      </article>
+    ))}
+  </section>
+
+  <section class="neural-module" id="skills">
+    <h2>{t.nav.skills}</h2>
+    <p><strong>{t.skills.languages}</strong></p>
+    <div class="neural-chips">
+      {skills.languages.map((s) => <span class="neural-chip">{s}</span>)}
+    </div>
+    <p><strong>{t.skills.frameworks}</strong></p>
+    <div class="neural-chips">
+      {skills.frameworks.map((s) => <span class="neural-chip">{s}</span>)}
+    </div>
+    <p><strong>{t.skills.concepts}</strong></p>
+    <div class="neural-chips">
+      {skills.concepts[locale].map((s) => <span class="neural-chip">{s}</span>)}
+    </div>
+  </section>
+
+  <section class="neural-module" id="ai">
+    <h2>{t.nav.ai}</h2>
+    <div class="neural-chips">
+      {aiTools.tools.map((tool) => <span class="neural-chip">{tool}</span>)}
+    </div>
+    <ul>
+      {aiTools.useCases[locale].map((uc) => <li>{uc}</li>)}
+    </ul>
+  </section>
+
+  <section class="neural-module neural-contact" id="contact">
+    <h2>{t.contact.title}</h2>
+    <a href={profile.links.email}>{profile.links.email.replace('mailto:', '')}</a>
+    <a href={profile.links.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+    <a href={profile.links.github} target="_blank" rel="noopener">GitHub</a>
+    <a href={profile.cv} download>{t.contact.download_cv}</a>
+  </section>
+</div>
+
+<script>
+  document.querySelectorAll('.neural-nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      document.querySelectorAll('.neural-nav-link').forEach((l) => l.classList.remove('is-active'));
+      link.classList.add('is-active');
+    });
+  });
+</script>

@@ -1,0 +1,53 @@
+---
+import { useTranslations, type Locale } from '../../../i18n';
+import NeuralHologram from './NeuralHologram.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+<div class="neural-pairing" id="neural-pairing">
+  <p class="neural-brand">{t.era2036.brand}</p>
+  <NeuralHologram />
+  <p class="neural-step">{t.era2036.step}</p>
+  <h1 class="neural-title">
+    Connect your <span class="highlight">{t.era2036.title_highlight}</span>™
+  </h1>
+  <p class="neural-subtitle">{t.era2036.subtitle}</p>
+  <p class="neural-link-msg" id="neural-link-msg" aria-live="polite"></p>
+  <button type="button" class="neural-start" id="neural-start">{t.era2036.start}</button>
+</div>
+
+<script is:inline define:vars={{ linkingText: t.era2036.linking, linkedText: t.era2036.linked }}>
+  (function () {
+    const startBtn = document.getElementById('neural-start');
+    const pairing = document.getElementById('neural-pairing');
+    const content = document.getElementById('neural-content');
+    const linkMsg = document.getElementById('neural-link-msg');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function showContent() {
+      pairing?.classList.add('is-hidden');
+      content?.classList.add('is-visible');
+    }
+
+    if (reduced) {
+      showContent();
+      return;
+    }
+
+    startBtn?.addEventListener('click', () => {
+      if (!startBtn || !linkMsg) return;
+      startBtn.disabled = true;
+      linkMsg.textContent = linkingText;
+
+      setTimeout(() => {
+        linkMsg.textContent = linkedText;
+        setTimeout(showContent, 600);
+      }, 2200);
+    });
+  })();
+</script>
