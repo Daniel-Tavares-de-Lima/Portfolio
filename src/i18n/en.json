@@ -46,8 +46,9 @@
     "built_with": "Built with Astro"
   },
   "timeline": {
-    "aria_label": "Navigate between eras",
-    "coming_soon_sr": "This era will be available soon"
+    "aria_label": "Browse eras",
+    "coming_soon_sr": "This era will be available soon",
+    "active_format": "{year} · {short}"
   },
   "era1986": {
     "connect": "CONNECT",

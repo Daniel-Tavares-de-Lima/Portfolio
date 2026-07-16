@@ -47,7 +47,8 @@
   },
   "timeline": {
     "aria_label": "Navegar entre eras",
-    "coming_soon_sr": "Esta era estará disponível em breve"
+    "coming_soon_sr": "Esta era estará disponível em breve",
+    "active_format": "{year} · {short}"
   },
   "era1986": {
     "connect": "CONECTAR",
