@@ -1,6 +1,6 @@
 ---
 import '../styles/eras/timeline.css';
-import { ERA_YEARS, type EraYear } from '../config/eras';
+import { ERA_YEARS, getEraMeta, type EraYear } from '../config/eras';
 import { useTranslations, type Locale } from '../i18n';
 
 interface Props {
@@ -16,17 +16,24 @@ const t = useTranslations(locale);
   aria-label={t.timeline.aria_label}
   role="tablist"
 >
+  <div class="era-timeline__rail" aria-hidden="true"></div>
   <div class="era-timeline__track">
-    {ERA_YEARS.map((year) => (
-      <a
-        href={`/${locale}/${year}`}
-        class="era-timeline__tab"
-        role="tab"
-        aria-selected={year === currentYear ? 'true' : 'false'}
-        aria-current={year === currentYear ? 'page' : undefined}
-      >
-        {year}
-      </a>
-    ))}
+    {ERA_YEARS.map((year) => {
+      const short = getEraMeta(year).shortLabel[locale];
+      const selected = year === currentYear;
+      return (
+        <a
+          href={`/${locale}/${year}`}
+          class:list={['era-timeline__tick', selected && 'is-active']}
+          role="tab"
+          aria-selected={selected ? 'true' : 'false'}
+          aria-current={selected ? 'page' : undefined}
+        >
+          <span class="era-timeline__dot"></span>
+          <span class="era-timeline__year">{year}</span>
+          {selected && <span class="era-timeline__short">{short}</span>}
+        </a>
+      );
+    })}
   </div>
 </nav>

@@ -329,19 +329,6 @@
   display: block;
 }
 
-.timeline--2046 .era-timeline__track {
-  background: #374151;
-}
-
-.timeline--2046 .era-timeline__tab {
-  color: #e5e7eb;
-}
-
-.timeline--2046 .era-timeline__tab[aria-selected='true'] {
-  background: #fff;
-  color: #111;
-}
-
 @media (max-width: 480px) {
   .consciousness-glitch {
     font-size: 1rem;
