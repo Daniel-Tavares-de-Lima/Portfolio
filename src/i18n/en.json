@@ -73,19 +73,19 @@
     "fallback": "I can tell you about experience, projects, skills, or contact. What would you like to know?"
   },
   "era1996": {
-    "site_title": "DANIEL TAVARES'S WORLD 96",
-    "tagline": "--- HOME ON THE INFORMATION SUPERHIGHWAY ---",
+    "site_title": "DANIEL'S PERSONAL PAGE '96",
+    "tagline": "--- MY LITTLE CORNER OF CYBERSPACE ---",
     "subtitle": "This is not a portfolio. It's a time machine.",
-    "marquee": "Visitor number 13371 !!! Best viewed in Netscape Navigator 3.0 at 800x600 ♥ Sign my guestbook!!! ♥ This page is 100% hand-coded HTML",
-    "menu_title": "★ MENU ★",
+    "marquee": "Visitor #13371 to this page !!! Built by hand, one <table> at a time ♥ Say hi in my guestbook ♥ Looks best at 800x600",
+    "menu_title": "★ AROUND THE PAGE ★",
     "visitors": "VISITORS",
     "youve_got_mail": "YOU'VE GOT MAIL!",
     "loading": "Loading page...",
     "loading_images": "Loading images...",
-    "go_1986": "◀ CLICK HERE TO GO TO 1986",
-    "go_2006": "✦ CLICK HERE TO GO TO 2006",
-    "hand_coded": "100% hand-coded HTML",
-    "guestbook": "Sign my guestbook!!!",
+    "go_1986": "◀ BACK TO 1986",
+    "go_2006": "FORWARD TO 2006 ✦",
+    "hand_coded": "Built by hand, one line at a time",
+    "guestbook": "Leave a note in my guestbook",
     "location": "Recife, Pernambuco, Brazil"
   },
   "era2006": {
