@@ -265,7 +265,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .connect-btn {
+  .connect-btn,
+  .bbs-skip-btn {
+    text-shadow: none;
     box-shadow: none;
   }
 
