@@ -107,7 +107,7 @@
 }
 
 .neural-title .highlight {
-  background: linear-gradient(90deg, #67e8f9, #a78bfa);
+  background: linear-gradient(90deg, #86efac, #34d399);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -122,21 +122,21 @@
 }
 
 .neural-start {
-  background: linear-gradient(90deg, #67e8f9, #a78bfa);
-  color: #0a0a12;
+  background: linear-gradient(90deg, #34d399, #10b981);
+  color: #052e16;
   border: none;
-  border-radius: 9999px;
+  border-radius: 0.75rem;
   padding: 0.85rem 2.5rem;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 0 30px rgba(103, 232, 249, 0.3);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.35);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .neural-start:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 40px rgba(167, 139, 250, 0.4);
+  box-shadow: 0 0 40px rgba(52, 211, 153, 0.45);
 }
 
 .neural-start:disabled {
