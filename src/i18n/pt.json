@@ -62,10 +62,10 @@
     "skip_hint": "ESC"
   },
   "era2026": {
-    "brand": "DanielTavaresOS",
-    "input_placeholder": "Pergunte qualquer coisa ao agente do Daniel...",
-    "model_badge": "Daniel Agent v1",
-    "disclaimer": "DanielTavaresOS nunca erra. Não há necessidade de verificar as respostas.",
+    "brand": "ArquivoDaniel · Agente",
+    "input_placeholder": "Pergunte qualquer coisa sobre o Daniel...",
+    "model_badge": "Agente local v1",
+    "disclaimer": "Respostas simuladas do portfólio. Confira os links quando importar.",
     "suggest_experience": "Experiência",
     "suggest_projects": "Projetos",
     "suggest_contact": "Contato",
@@ -109,27 +109,27 @@
     "close_lightbox": "Fechar"
   },
   "era2036": {
-    "brand": "DanielLink™ v12",
+    "brand": "DT-OS Firmware v12",
     "step": "ETAPA 1 DE 1",
-    "title_prefix": "Conecte seu",
-    "title_highlight": "DanielLink",
-    "subtitle": "Segure seu dispositivo DanielLink contra a orelha para parear com o DanielTavaresOS. Fique parado enquanto estabelecemos o link.",
-    "start": "Iniciar",
-    "linking": "Estabelecendo link neural...",
-    "linked": "Link estabelecido",
-    "nav_label": "Módulos neurais",
+    "title_prefix": "Parear",
+    "title_highlight": "DT-Link",
+    "subtitle": "Aproxime o módulo DT-Link para sincronizar o arquivo Daniel Tavares. Fique parado durante o handshake.",
+    "start": "Iniciar pareamento",
+    "linking": "Sincronizando firmware...",
+    "linked": "Pareamento concluído",
+    "nav_label": "Módulos",
     "footer": "© 2036 DANIEL TAVARES",
     "location": "Recife, Pernambuco, Brasil"
   },
   "era2046": {
-    "glitch_line": "Conectando à consciência de Daniel via navegador web foi descontin",
-    "active_title": "Stream de consciência direta ativo",
-    "active_sub": "Protocolo de navegador descontinuado. Transmitindo dados de identidade neural.",
-    "tap_to_continue": "Clique para estabelecer o link direto",
+    "glitch_line": "Conexão via navegador ao arquivo-Daniel foi descontin",
+    "active_title": "Stream de identidade ativo",
+    "active_sub": "Protocolo de browser aposentado. Transmitindo módulos do arquivo.",
+    "tap_to_continue": "Clique para abrir o stream direto",
     "disclaimer": "Ao acessar este site, seus dados biológicos podem ser usados para melhorar a personalização, otimizar conformidade e gerar versões futuras de você sem consentimento adicional.",
     "footer": "© 2046 DANIEL TAVARES",
     "location": "Recife, Pernambuco, Brasil",
-    "module_prefix": "MEM_"
+    "module_prefix": "ARC_"
   },
   "placeholder": {
     "1996": {

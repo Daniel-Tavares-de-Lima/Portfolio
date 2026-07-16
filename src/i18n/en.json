@@ -62,10 +62,10 @@
     "skip_hint": "ESC"
   },
   "era2026": {
-    "brand": "DanielTavaresOS",
-    "input_placeholder": "Ask Daniel's agent anything...",
-    "model_badge": "Daniel Agent v1",
-    "disclaimer": "DanielTavaresOS never makes mistakes. There's no need to double-check responses.",
+    "brand": "DanielArchive · Agent",
+    "input_placeholder": "Ask anything about Daniel...",
+    "model_badge": "Local agent v1",
+    "disclaimer": "Simulated portfolio answers. Double-check links when it matters.",
     "suggest_experience": "Experience",
     "suggest_projects": "Projects",
     "suggest_contact": "Contact",
@@ -109,27 +109,27 @@
     "close_lightbox": "Close"
   },
   "era2036": {
-    "brand": "DanielLink™ v12",
+    "brand": "DT-OS Firmware v12",
     "step": "STEP 1 OF 1",
-    "title_prefix": "Connect your",
-    "title_highlight": "DanielLink",
-    "subtitle": "Hold your DanielLink device against your ear to pair with DanielTavaresOS. Stay still while we establish the link.",
-    "start": "Start",
-    "linking": "Establishing neural link...",
-    "linked": "Link established",
-    "nav_label": "Neural modules",
+    "title_prefix": "Pair",
+    "title_highlight": "DT-Link",
+    "subtitle": "Hold the DT-Link module nearby to sync the Daniel Tavares archive. Stay still during handshake.",
+    "start": "Start pairing",
+    "linking": "Syncing firmware...",
+    "linked": "Pairing complete",
+    "nav_label": "Modules",
     "footer": "© 2036 DANIEL TAVARES",
     "location": "Recife, Pernambuco, Brazil"
   },
   "era2046": {
-    "glitch_line": "Connecting to Daniel's consciousness via web browser was discontin",
-    "active_title": "Direct consciousness stream active",
-    "active_sub": "Browser protocol deprecated. Streaming neural identity data.",
-    "tap_to_continue": "Click to establish direct link",
+    "glitch_line": "Browser connection to the Daniel-archive was discontin",
+    "active_title": "Identity stream active",
+    "active_sub": "Browser protocol retired. Streaming archive modules.",
+    "tap_to_continue": "Click to open the direct stream",
     "disclaimer": "By accessing this site your biological data may be used to improve personalization, optimize compliance and generate future versions of you without additional consent.",
     "footer": "© 2046 DANIEL TAVARES",
     "location": "Recife, Pernambuco, Brazil",
-    "module_prefix": "MEM_"
+    "module_prefix": "ARC_"
   },
   "placeholder": {
     "1996": {
