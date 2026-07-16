@@ -650,7 +650,7 @@ description:
   en: "Mobile app for pet rescue NGOs, volunteers and blog."
 stack: ["CSS", "Mobile"]
 category: "academic"
-featured: true
+featured: true1
 order: 10
 github: "https://github.com/Daniel-Tavares-de-Lima/Petshop-Mobile"
 demo: ""
