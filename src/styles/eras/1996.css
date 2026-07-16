@@ -1,5 +1,5 @@
 .era-1996 {
-  background: #663399;
+  background: #1a3a5c;
   background-image:
     repeating-linear-gradient(
       45deg,
@@ -23,7 +23,7 @@
 }
 
 html:has(.era-1996) body {
-  background: #663399;
+  background: #1a3a5c;
   color: #000000;
 }
 

@@ -3,13 +3,16 @@ import { useTranslations, type Locale } from '../../../i18n';
 
 interface Props {
   locale: Locale;
+  year: string;
 }
 
-const { locale } = Astro.props;
+const { locale, year } = Astro.props;
 const t = useTranslations(locale);
+const other = locale === 'pt' ? 'en' : 'pt';
 ---
 <div class="connect-screen" id="connect-screen">
-  <div class="terminal-chrome" aria-hidden="true">NODE://RECIFE-BR ▓▓▓</div>
+  <a href={`/${other}/${year}`} class="bbs-lang bbs-lang--connect">{locale === 'pt' ? 'EN' : 'PT'}</a>
+  <div class="terminal-chrome" aria-hidden="true">NODE://RECIFE-BR ───</div>
   <h1 class="bbs-type-target" data-text={t.era1986.bbs_title}></h1>
   <p class="specs bbs-type-target" data-text={t.era1986.specs}></p>
   <p class="dialing-msg" id="dialing-msg" aria-live="polite"></p>

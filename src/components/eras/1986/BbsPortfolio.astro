@@ -7,10 +7,12 @@ import TerminalSection from './TerminalSection.astro';
 
 interface Props {
   locale: Locale;
+  year: string;
 }
 
-const { locale } = Astro.props;
+const { locale, year } = Astro.props;
 const t = useTranslations(locale);
+const other = locale === 'pt' ? 'en' : 'pt';
 const projects = (await getCollection('projects'))
   .filter((p) => p.data.featured)
   .sort((a, b) => a.data.order - b.data.order);
@@ -35,7 +37,10 @@ const projectLines = projects
 const contactText = `${t.era1986.dial}: ${profile.links.email.replace('mailto:', '')}\nLINKEDIN: ${profile.links.linkedin}\nGITHUB: ${profile.links.github}`;
 ---
 <section class="bbs-section" id="hero">
-  <h2>SYS/INFO</h2>
+  <div class="bbs-section-top">
+    <h2>SYS/INFO</h2>
+    <a href={`/${other}/${year}`} class="bbs-lang">{locale === 'pt' ? 'EN' : 'PT'}</a>
+  </div>
   <TerminalSection text={asciiName} />
 </section>
 

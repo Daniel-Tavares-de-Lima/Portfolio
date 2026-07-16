@@ -81,6 +81,42 @@
   display: none;
 }
 
+.bbs-lang {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  color: var(--phosphor);
+  border: 1px solid var(--phosphor-dim);
+  padding: 0.2rem 0.55rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+}
+
+.bbs-lang:hover,
+.bbs-lang:focus-visible {
+  background: var(--phosphor);
+  color: #0b0702;
+  text-shadow: none;
+}
+
+.bbs-section-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.bbs-section-top .bbs-lang {
+  position: static;
+}
+
+.bbs-section-top h2 {
+  margin: 0;
+}
+
 .terminal-chrome {
   font-size: 0.75rem;
   letter-spacing: 0.2em;

@@ -10,6 +10,27 @@
   margin: 0 auto;
   padding: 2rem 1.5rem 3rem;
   text-align: center;
+  position: relative;
+}
+
+.agent-lang {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  border: 1px solid rgba(251, 146, 60, 0.45);
+  border-radius: 0.5rem;
+  padding: 0.35rem 0.65rem;
+  color: #fdba74;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.agent-lang:hover,
+.agent-lang:focus-visible {
+  background: rgba(234, 88, 12, 0.25);
+  border-color: #fb923c;
+  color: #fed7aa;
 }
 
 .agent-brand {
@@ -145,11 +166,11 @@
 }
 
 .chat-suggest {
-  background: rgba(99, 102, 241, 0.25);
-  border: 1px solid rgba(167, 139, 250, 0.4);
+  background: rgba(234, 88, 12, 0.2);
+  border: 1px solid rgba(251, 146, 60, 0.4);
   border-radius: 9999px;
   padding: 0.35rem 0.85rem;
-  color: #c4b5fd;
+  color: #fdba74;
   font-size: 0.8rem;
   cursor: pointer;
 }
@@ -176,9 +197,9 @@
 }
 
 .static-sections .glass-section {
-  background: rgba(30, 20, 60, 0.4);
+  background: rgba(28, 25, 23, 0.55);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(167, 139, 250, 0.2);
+  border: 1px solid rgba(251, 146, 60, 0.2);
   border-radius: 1rem;
   margin: 1rem auto;
   max-width: 900px;

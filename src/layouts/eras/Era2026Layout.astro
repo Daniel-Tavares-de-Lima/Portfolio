@@ -17,7 +17,7 @@ const { title, description, locale, year } = Astro.props;
 <BaseLayout {title} {description} {locale} year={year}>
   <slot name="timeline" />
   <div class="era-2026">
-    <AgentChat locale={locale} />
+    <AgentChat locale={locale} year={year} />
     <StaticSections locale={locale} />
   </div>
 </BaseLayout>

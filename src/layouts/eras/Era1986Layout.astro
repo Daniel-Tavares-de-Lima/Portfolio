@@ -24,12 +24,12 @@ const t = useTranslations(locale);
       <div class="crt-scanlines"></div>
       <div class="crt-vignette"></div>
     </div>
-    <ConnectScreen locale={locale} />
+    <ConnectScreen locale={locale} year={year} />
     <button type="button" class="bbs-skip-btn" id="bbs-skip-btn" hidden aria-label={t.era1986.skip}>
       ►► {t.era1986.skip} <span class="bbs-skip-key">({t.era1986.skip_hint})</span>
     </button>
     <div class="terminal-content" id="bbs-content">
-      <BbsPortfolio locale={locale} />
+      <BbsPortfolio locale={locale} year={year} />
     </div>
   </div>
 </BaseLayout>

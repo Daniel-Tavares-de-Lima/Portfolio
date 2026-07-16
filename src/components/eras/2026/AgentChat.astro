@@ -8,10 +8,12 @@ import { type ChatResponses } from '../../../data/chat-responses';
 
 interface Props {
   locale: Locale;
+  year: string;
 }
 
-const { locale } = Astro.props;
+const { locale, year } = Astro.props;
 const t = useTranslations(locale);
+const other = locale === 'pt' ? 'en' : 'pt';
 
 const projects = (await getCollection('projects'))
   .filter((p) => p.data.featured)
@@ -68,6 +70,7 @@ const suggestions = [
 ];
 ---
 <div class="agent-shell">
+  <a href={`/${other}/${year}`} class="agent-lang">{locale === 'pt' ? 'EN' : 'PT'}</a>
   <div class="agent-orb-ring" aria-hidden="true"></div>
   <div class="agent-orb" aria-hidden="true"></div>
   <h1 class="agent-brand">
