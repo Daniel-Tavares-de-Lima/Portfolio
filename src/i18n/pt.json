@@ -51,13 +51,13 @@
     "active_format": "{year} · {short}"
   },
   "era1986": {
-    "connect": "CONECTAR",
-    "press_to_dial": "[ PRESS TO DIAL IN ]",
-    "dialing": "Discando...",
-    "bbs_title": "DANIEL'S BBS",
-    "specs": "1200 BAUD - 8-N-1 - ANSI",
-    "file_listing": "FILE LISTING",
-    "dial": "DIAL",
+    "connect": "ESTABELECER LINK",
+    "press_to_dial": "[ ENTER PARA HANDSHAKE ]",
+    "dialing": "Negociando 1200 baud...",
+    "bbs_title": "ARQUIVO · DANIEL TAVARES",
+    "specs": "RECIFE NODE · 8-N-1 · ANSI",
+    "file_listing": "LISTAGEM",
+    "dial": "LINK",
     "skip": "Pular animação",
     "skip_hint": "ESC"
   },

@@ -9,6 +9,7 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 <div class="connect-screen" id="connect-screen">
+  <div class="terminal-chrome" aria-hidden="true">NODE://RECIFE-BR ▓▓▓</div>
   <h1 class="bbs-type-target" data-text={t.era1986.bbs_title}></h1>
   <p class="specs bbs-type-target" data-text={t.era1986.specs}></p>
   <p class="dialing-msg" id="dialing-msg" aria-live="polite"></p>
