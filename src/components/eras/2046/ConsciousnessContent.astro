@@ -56,7 +56,9 @@ const navItems = [
   <section class="consciousness-block" id="about">
     <h2><span>{prefix}</span>01 · {t.nav.about}</h2>
     <div class="consciousness-about">
-      <img src={profile.avatar} alt={profile.name} class="consciousness-avatar" width="72" height="72" loading="lazy" />
+      <div class="consciousness-avatar-wrap">
+        <img src={profile.avatar} alt={profile.name} class="consciousness-avatar" width="72" height="72" loading="lazy" />
+      </div>
       <div>
         <p class="consciousness-name">{profile.name}</p>
         <p class="consciousness-role">{profile.title[locale]}</p>

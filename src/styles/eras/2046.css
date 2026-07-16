@@ -176,12 +176,23 @@
   align-items: flex-start;
 }
 
-.consciousness-avatar {
+.consciousness-avatar-wrap {
   width: 72px;
   height: 72px;
+  flex-shrink: 0;
   border-radius: 4px;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+.consciousness-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
   filter: grayscale(100%) contrast(1.1);
   object-fit: cover;
+  object-position: center 18%;
+  display: block;
 }
 
 .consciousness-name {

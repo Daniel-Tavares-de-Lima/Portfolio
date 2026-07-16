@@ -55,7 +55,9 @@ const navItems = [
   <section class="neural-module" id="about">
     <h2>{t.nav.about}</h2>
     <div class="neural-about">
-      <img src={profile.avatar} alt={profile.name} class="neural-avatar" width="88" height="88" loading="lazy" />
+      <div class="neural-avatar-wrap">
+        <img src={profile.avatar} alt={profile.name} class="neural-avatar" width="88" height="88" loading="lazy" />
+      </div>
       <div>
         <p class="neural-name">{profile.name}</p>
         <p class="neural-role">{profile.title[locale]}</p>
