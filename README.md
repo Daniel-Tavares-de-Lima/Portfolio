@@ -1,43 +1,25 @@
-# Daniel Tavares — Portfolio
+# Daniel Tavares — Portfólio
 
-Bilingual (PT/EN) personal portfolio built with Astro — **a time machine through 7 tech eras**.
+Portfólio pessoal bilíngue (PT/EN) construído com Astro — **uma máquina do tempo através de 7 eras da tecnologia**.
 
-## Time Machine
+## Máquina do Tempo
 
-Default home: `/pt/2016`. Use the timeline bar to switch eras.
+Página inicial padrão: `/pt/2016`. Use a barra de linha do tempo para alternar entre as eras.
 
-| Era | Route | Status |
+| Era | Rota | Status |
 |-----|-------|--------|
-| 1986 BBS | `/pt/1986` | Ready |
-| 1996 GeoCities | `/pt/1996` | Ready |
-| 2006 Web 2.0 | `/pt/2006` | Ready |
-| 2016 Flat | `/pt/2016` | Ready (default) |
-| 2026 Agent | `/pt/2026` | Ready |
-| 2036 Neural | `/pt/2036` | Ready |
-| 2046 Consciousness | `/pt/2046` | Ready |
+| 1986 BBS | `/pt/1986` | Pronto |
+| 1996 GeoCities | `/pt/1996` | Pronto |
+| 2006 Web 2.0 | `/pt/2006` | Pronto |
+| 2016 Flat | `/pt/2016` | Pronto (padrão) |
+| 2026 Agente | `/pt/2026` | Pronto |
+| 2036 Neural | `/pt/2036` | Pronto |
+| 2046 Consciência | `/pt/2046` | Pronto |
 
-English routes: replace `/pt` with `/en`.
+Rotas em inglês: substitua `/pt` por `/en`.
 
-## Development
+## Desenvolvimento
 
 ```bash
 npm install
 npm run dev
-```
-
-## Build
-
-```bash
-npm run build
-npm run preview
-```
-
-## Deploy
-
-Connected to Vercel — push to `main` triggers automatic deploy.
-
-## Content Updates
-
-- **Projects:** add/edit files in `src/content/projects/`
-- **Resume data:** edit JSON files in `src/data/`
-- **CV:** replace `public/cv-daniel-tavares.pdf`
